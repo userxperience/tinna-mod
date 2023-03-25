@@ -1,0 +1,15 @@
+------------------------------------------------------------------
+Information on updates and versions
+------------------------------------------------------------------
+Thank you for using my template mod!
+Here are the versions of this mod:
+Release 17.11.22:
+Base content:
+tech silo device
+hullbreaker weapon
+shield and rope material changes (devices on ropes, cheaper shields)
+
+Quick Fix 18.11.22:
+Removed existing errors
+Added name files to devices and weapons
+enabled everything by default
