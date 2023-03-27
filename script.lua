@@ -1,5 +1,7 @@
 dofile("scripts/forts.lua") --needed for scripts
 
+Log("Based on Dark_Slayer3000's template mod (Assist Template)") --logs a message in the chat when the game starts
+
 --function to add metal to a team that got hit by a specific projectile
 function OnProjectileDestroyed(nodeId, teamId, saveName, structureIdHit) --checks when a projectile is destroyed and wich team it hit
     if saveName == "Metalpack" and structureIdHit ~= 0 then --if the projectile is "metalpack" and hit a fort owned by a team:

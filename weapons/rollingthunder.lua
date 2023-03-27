@@ -67,7 +67,7 @@ Sprites = --defines new sprites that can be used by any weapon
         Name = "rollingthunder-base", --the main part
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/hullbreaker/base.tga" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.tga" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
             Idle = Normal,
         },
     },
@@ -75,7 +75,7 @@ Sprites = --defines new sprites that can be used by any weapon
         Name = "rollingthunder-head", --the gun barrel
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/hullbreaker/head.tga" }, mipmap = true, }, },
+            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.tga" }, mipmap = true, }, },
             Idle = Normal,
         },
     },
@@ -83,31 +83,31 @@ Sprites = --defines new sprites that can be used by any weapon
         Name = "rollingthunder-arm", --the reload effect
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim01.png" }, mipmap = true, }, },
+            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim01.png" }, mipmap = true, }, },
             Idle = Normal,
             Reload =
             {
                 Frames =
                 {
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim01.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim02.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim03.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim04.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim05.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim06.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim07.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim08.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim09.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim10.png", duration = 3.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim11.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim12.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim13.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim14.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim15.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim16.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim17.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim18.png", duration = 0.1 },
-                    { texture = path .. "/weapons/hullbreaker/Sniper-ReloadAnim19.png", duration = 1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim01.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim02.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim03.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim04.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim05.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim06.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim07.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim08.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim09.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim10.png", duration = 3.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim11.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim12.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim13.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim14.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim15.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim16.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim17.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim18.png", duration = 0.1 },
+                    { texture = path .. "/weapons/rollingthunder/Sniper-ReloadAnim19.png", duration = 1 },
                     mipmap = true,
                     duration = 0.2,
                 },

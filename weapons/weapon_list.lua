@@ -40,10 +40,10 @@ table.insert(Sprites, DetailSprite("hud-detail-hullbreaker", "HUD-Details-hullbr
 		},
 	})
 
-table.insert(Weapons, IndexOfWeapon("cannon") + 1,
+table.insert(Weapons, IndexOfWeapon("cannon") - 1,
 		{
 			Enabled = true,
-			SaveName = "rollingthunder.lua",
+			SaveName = "rollingthunder",
 			FileName = path .. "/weapons/rollingthunder.lua",
 			Icon = "hud-hullbreaker-icon", --bottom HUD (weapon list)
 			GroupButton = "hud-group-hullbreaker", --top HUD (weapon groups)
