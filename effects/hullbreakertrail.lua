@@ -20,8 +20,8 @@ Effects =
 			Mean = 0,
 			StdDev = 15,						-- standard deviation at each iteration in degrees (zero will make them space perfectly even)
 		},
-		
-		Keyframes =							
+
+		Keyframes =
 		{
 			{
 				Angle = 0,
@@ -36,7 +36,7 @@ Effects =
 				RotationMean = 0,
 				RotationStdDev = 20,
 				RotationalSpeedMean = 0,
-				RotationalSpeedStdDev = 25,	
+				RotationalSpeedStdDev = 25,
 				AgeMean = 0.45,
 				AgeStdDev = 0,
 				AlphaKeys = { 0.1, 1 },
@@ -45,18 +45,18 @@ Effects =
 			},
 		},
 	},
-	{
-		Type = "trail",
-		Texture = path .. "/effects/media/trail.tga",
-		LocalPosition = { x = 0, y = 0, z = 9.0 },
-		Colour = { 64, 64, 64, 255 },
-		Additive = false,
-		Width = 1.5,
-		Length = 40.75,
-		Keyframes = 100,
-		KeyframePeriod = 0.05,
-		RepeatRate = 0.001,
-		ScrollRate = 0,
-		FattenRate = 0,
-	}
+	--{
+	--	Type = "trail",
+	--	Texture = path .. "/effects/media/trail.tga",
+	--	LocalPosition = { x = 0, y = 0, z = 9.0 },
+	--	Colour = { 64, 64, 64, 255 },
+	--	Additive = false,
+	--	Width = 1.5,
+	--	Length = 40.75,
+	--	Keyframes = 100,
+	--	KeyframePeriod = 0.05,
+	--	RepeatRate = 0.001,
+	--	ScrollRate = 0,
+	--	FattenRate = 0,
+	--}
 }

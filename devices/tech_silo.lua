@@ -105,7 +105,7 @@ Sprites =
 		Name = "tech_silo-base",
 		States =
 		{
-			Normal = { Frames = { { texture = path .. "/devices/tech_silo/base.tga" }, mipmap = true, }, },
+			Normal = { Frames = { { texture = path .. "/devices/tech_silo/base.png" }, mipmap = true, }, },
 		},
 	},
 }

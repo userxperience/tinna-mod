@@ -67,7 +67,7 @@ Sprites = --defines new sprites that can be used by any weapon
 		Name = "hullbreaker-base", --the main part
 		States =
 		{
-			Normal = { Frames = { { texture = path .. "/weapons/hullbreaker/base.tga" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+			Normal = { Frames = { { texture = path .. "/weapons/hullbreaker/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
 			Idle = Normal,
 		},
 	},
