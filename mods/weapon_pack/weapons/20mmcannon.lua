@@ -28,7 +28,6 @@ StructureSplashDamage = 160
 StructureSplashDamageMaxRadius = 150
 
 FireEffect = "mods/weapon_pack/effects/fire_20mmcannon.lua"
-
 ConstructEffect = "effects/device_construct.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "mods/weapon_pack/effects/20mmcannon_explode.lua"

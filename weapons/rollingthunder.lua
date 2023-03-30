@@ -1,8 +1,9 @@
 Scale = 1 --general size of the hitbox, ususally kept at 1
-SelectionWidth = 80.0 --width of the hitbox. ~25 is a grid square
-SelectionHeight = 120 --slightly less than 2 grids, similar to sniper
-SelectionOffset = { -70, -120 } --first number is for width, second for height. Make the second number always 0.5 greater and usually keep the first number from the template. Experiment a bit!
-RecessionBox = --TODO fix building icon location upon placing weapon
+SelectionWidth = 70.0 --width of the hitbox. ~25 is a grid square
+SelectionHeight = 80 --slightly less than 2 grids, similar to sniper
+SelectionOffset = { -35, -80 } --make first number negative half of selectionwidth, and second number negative selectionheight except if you want the weapon to overlap with ground.
+RecessionBox =
+
 {
     Size = { 200, 25 },
     Offset = { -300, -50 },
@@ -18,7 +19,7 @@ MinWindEfficiency = 1 --for turbines
 MaxWindHeight = 0 --for turbines
 MaxRotationalSpeed = 0 --for turbines
 
-FireEffect = "mods/weapon_pack/effects/fire_20mmcannon.lua" --effect that has sprites and sounds when shooting
+FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
 ConstructEffect = "effects/device_upgrade.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/sniper_explode.lua"
@@ -32,8 +33,8 @@ FireClearanceOffsetInner = 20
 FireClearanceOffsetOuter = 40
 ReloadTime = 18 --X seconds of reload time
 ReloadTimeIncludesBurst = false --starts reloading while shooting if true
-MinFireSpeed = 1000 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
-MaxFireSpeed = 2500 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
+MinFireSpeed = 500 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
+MaxFireSpeed = 3000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
 MinFireRadius = 420 --size of the firing arc (start)
 MaxFireRadius = 1069--size of the firing arc (end)
 MinVisibility = 0.3--for the system that weapons placed higher up have a bigger arc
@@ -49,12 +50,16 @@ FireStdDevAuto = 0--inaccuracy specifically when pressing "e" on the weapon (aut
 FireDelay = 0.15 --seconds before the weapon shoots when pressing fire
 RoundPeriod = 1.35 --how long a single shot lasts (time after shots, adds to reload time)
 Recoil = 400000 --make this number really really high and you will see what it does xD
-EnergyFireCost = 500 --energy cost each time you shoot
+EnergyFireCost = 4000 --energy cost each time you shoot
 MetalFireCost = 50 --same but with metal instead
 AutofireCloseDoorTicks = 1.5*25 --How many ticks until the door closes after you fire (25 is one second)
 RoundsEachBurst = 10 --how many shots in a burst
-RoundPeriod = 0.01 --time between shots in a burst in seconds
+RoundPeriod = 0.2 --time between shots in a burst in seconds
 DefaultFireAngle = (MinFireAngle + MaxFireAngle)/2
+RetriggerFireEffect = true --plays the fire sound effect again when burst shots
+IgnitePlatformOnDestruct = true
+StructureSplashDamage = 200
+StructureSplashDamageMaxRadius = 150
 
 ShowFireAngle = true
 ShowFireSpeed = true
@@ -91,7 +96,7 @@ Root =
 {
     Name = "Rolling thunder", --name doesn't matter
     Angle = 0, --how many degrees it's turned
-    Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture --TODO: change this to the centre of the weapon
+    Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture
     PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
     Sprite = "rollingthunder-base", --sprite name DOES matter
     UserData = 0, --when the sprite shows up during building of the weapon. 0 = instandly, 100 = completely finished

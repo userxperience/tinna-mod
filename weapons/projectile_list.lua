@@ -121,95 +121,126 @@ local Metalpack = FindProjectile("Metalpack")
 if Metalpack then
 	Metalpack.Effects.Impact["firebeam"] = { Effect = nil, Projectile = { Count = 1, Type = "flamingMetalpack", Speed = 0, StdDev = 0 }, Offset = 0, Terminate = true, }
 end
-	table.insert(Projectiles,
-	{
-		SaveName = "hullbreaker",
-
-		ProjectileType = "mortar", -- necessary to make a trail
-		ProjectileSprite = path .."/effects/media/hullbreaker",
-		ProjectileSpriteMipMap = true,
-		DrawBlurredProjectile = true, --higher speeds will stretch the sprite
-		AntiAirHitpoints = 50,
-		ProjectileMass = 20,
-		ProjectileDrag = -15, --ACCELERATES WHEN FLYING! :O
-		ProjectileIncendiary = true,
-		AlwaysIncendiary = true, --use when incendiary projectiles don't work right just in case xD
-		DeflectedByShields = false,
-		ExplodeOnTouch = false,
-		ProjectileThickness = 10,
-		ProjectileShootDownRadius = 75, --big radius
-		Impact = 120000,
-		ProjectileDamage = 200, --bracing has 150 HP, armor has 400 HP
-		WeaponDamageBonus = 100, --300 damage to weapons. That's almost 3 sniper shots
-		DeflectedByTerrain = false, --set to true if you want it to bounce around the map :P
-		Gravity = 0, --0 grav
-		MinAge = 1,
-		MaxAge = 2, --tiny age never reached because of the age effect
-		TrailEffect = path .."/effects/hullbreakertrail.lua", --custom trail effect
-		Effects =
-		{
-			ImpactDevice =
-			{
-				["sandbags"] = "effects/bullet_sandbag_hit.lua",
-			},
-			Impact =
-			{--releases a mortar on hit
-				["default"] = { Effect = "effects/mortar_air_burst.lua", Projectile = { Count = 1, Type = "mortar", Speed = -300, StdDev = 0.1 }, Terminate = true, },
-				["firebeam"] = { Effect = "effects/bullet_armor_ricochet.lua", Projectile = { Count = 1, Type = "flaminghullbreaker", Speed = 0, StdDev = 0 }, Terminate = true, }
-			},--beam interactions can be placed in the Impact table. Also works with "laser" and "magnabeam"
-			Deflect =
-			{
-				["bracing"] = "effects/bullet_bracing_hit.lua",
-				["backbracing"] = "effects/bullet_bracing_hit.lua",
-				["armour"] = "effects/bullet_armor_ricochet.lua",
-				["door"] = "effects/bullet_armor_ricochet.lua",
-				["shield"] = "effects/energy_shield_ricochet.lua",
-			},
---			Penetrate =
---			{ --for an AP sniper situation ;)
+--	table.insert(Projectiles,
+--	{
+--		SaveName = "hullbreaker",
+--
+--		ProjectileType = "mortar", -- necessary to make a trail
+--		ProjectileSprite = path .."/effects/media/hullbreaker",
+--		ProjectileSpriteMipMap = true,
+--		DrawBlurredProjectile = true, --higher speeds will stretch the sprite
+--		AntiAirHitpoints = 50,
+--		ProjectileMass = 20,
+--		ProjectileDrag = -15, --ACCELERATES WHEN FLYING! :O
+--		ProjectileIncendiary = true,
+--		AlwaysIncendiary = true, --use when incendiary projectiles don't work right just in case xD
+--		DeflectedByShields = false,
+--		ExplodeOnTouch = false,
+--		ProjectileThickness = 10,
+--		ProjectileShootDownRadius = 75, --big radius
+--		Impact = 120000,
+--		ProjectileDamage = 200, --bracing has 150 HP, armor has 400 HP
+--		WeaponDamageBonus = 100, --300 damage to weapons. That's almost 3 sniper shots
+--		DeflectedByTerrain = false, --set to true if you want it to bounce around the map :P
+--		Gravity = 0, --0 grav
+--		MinAge = 1,
+--		MaxAge = 2, --tiny age never reached because of the age effect
+--		TrailEffect = path .."/effects/hullbreakertrail.lua", --custom trail effect
+--		Effects =
+--		{
+--			ImpactDevice =
+--			{
+--				["sandbags"] = "effects/bullet_sandbag_hit.lua",
 --			},
-			Age = 
-			{ 
-				t250 = { Effect = "effects/impact_light.lua", Projectile = { Count = 1, Type = "hullbreaker", Speed = 3000, StdDev = 0 }, Terminate = true, },
-			}, --t1000 = 1 second. Every 250 ms this effect is played to reset the projectile. The speed here replaces the launch speed from the weapon :)
-		},
-		DamageMultiplier =
-		{
-			{ SaveName = "armour", Direct = 2, Splash = 1 }, --double damage to metal!
-			{ SaveName = "door", Direct = 2, Splash = 1 }, --400 damage! Oneshots!
-		},
-	})
---local hullbreaker = FindProjectile("hullbreaker")
---if hullbreaker then
---	hullbreaker.Effects.Impact["firebeam"] = { Effect = "effects/bullet_armor_ricochet.lua", Projectile = { Count = 1, Type = "flaminghullbreaker", Speed = 0, StdDev = 0 }, Terminate = true, }
---end
+--			Impact =
+--			{--releases a mortar on hit
+--				["default"] = { Effect = "effects/mortar_air_burst.lua", Projectile = { Count = 1, Type = "mortar", Speed = -300, StdDev = 0.1 }, Terminate = true, },
+--				["firebeam"] = { Effect = "effects/bullet_armor_ricochet.lua", Projectile = { Count = 1, Type = "flaminghullbreaker", Speed = 0, StdDev = 0 }, Terminate = true, }
+--			},--beam interactions can be placed in the Impact table. Also works with "laser" and "magnabeam"
+--			Deflect =
+--			{
+--				["bracing"] = "effects/bullet_bracing_hit.lua",
+--				["backbracing"] = "effects/bullet_bracing_hit.lua",
+--				["armour"] = "effects/bullet_armor_ricochet.lua",
+--				["door"] = "effects/bullet_armor_ricochet.lua",
+--				["shield"] = "effects/energy_shield_ricochet.lua",
+--			},
+----			Penetrate =
+----			{ --for an AP sniper situation ;)
+----			},
+--			Age =
+--			{
+--				t250 = { Effect = "effects/impact_light.lua", Projectile = { Count = 1, Type = "hullbreaker", Speed = 3000, StdDev = 0 }, Terminate = true, },
+--			}, --t1000 = 1 second. Every 250 ms this effect is played to reset the projectile. The speed here replaces the launch speed from the weapon :)
+--		},
+--		DamageMultiplier =
+--		{
+--			{ SaveName = "armour", Direct = 2, Splash = 1 }, --double damage to metal!
+--			{ SaveName = "door", Direct = 2, Splash = 1 }, --400 damage! Oneshots!
+--		},
+--	})
+----local hullbreaker = FindProjectile("hullbreaker")
+----if hullbreaker then
+----	hullbreaker.Effects.Impact["firebeam"] = { Effect = "effects/bullet_armor_ricochet.lua", Projectile = { Count = 1, Type = "flaminghullbreaker", Speed = 0, StdDev = 0 }, Terminate = true, }
+----end
 
 table.insert(Projectiles,
 		{
 			SaveName = "rollingthunderrocket",
 
 			ProjectileType = "mortar", -- necessary to make a trail
-			ProjectileSprite = path .."/effects/media/hullbreaker",
+			ProjectileSprite = path .."/effects/media/rollingthunderprojectile",
 			ProjectileSpriteMipMap = true,
 			DrawBlurredProjectile = false, --higher speeds will stretch the sprite
-			AntiAirHitpoints = 50,
+			AntiAirHitpoints = 10,
 			ProjectileMass = 16,
-			ProjectileDrag = 0, --drag, negative value will make projectile accelerate
+			ProjectileDrag = -1, --drag, negative value will make projectile accelerate
 			ProjectileIncendiary = true,
 			AlwaysIncendiary = false, --use when incendiary projectiles don't work right just in case xD
 			DeflectedByShields = false,
 			ExplodeOnTouch = true,
+			CanBeShotDown = true,
+
+			ProjectileDamage = 200.0,
+			ProjectileSplashDamage = 30.0,
+			ProjectileSplashDamageMaxRadius = 200.0,
+			ProjectileSplashMaxForce = 75000,
+			IgnitesBackgroundMaterials = true,
+			IgnitesBackgroundMaterialsPassing = true,
 
 			ProjectileThickness = 10,
-			ProjectileShootDownRadius = 75, --big radius
+			ProjectileShootDownRadius = 50, --big radius
 			Impact = 200000,
 			SpeedIndicatorFactor = 1,
 			ProjectileDamage = 200, --bracing has 150 HP, armor has 400 HP
 			WeaponDamageBonus = 100, --300 damage to weapons. That's almost 3 sniper shots
 			DeflectedByTerrain = false, --set to true if you want it to bounce around the map :P
-			Gravity = 300,
+			Gravity = 500,
 			MaxAge = 60,
-			TrailEffect = path .."/effects/hullbreakertrail.lua", --custom trail effect
+			TrailEffect = path .. "/effects/rollingthunderprojectiletrail.lua", --custom trail effect
+
+			Projectile =
+			{
+				Root =
+				{
+					Name = "rollingthunderprojectile",
+					Angle = 0,
+					Pivot = { 0, 0.35 },
+
+					ChildrenInFront =
+					{
+						{
+							Name = "Flame",
+							Angle = 0,
+							Offset = { 0, 0.8 },
+							Pivot = { 0, 0.1 },
+							PivotOffset = { 0, 0 },
+							Sprite = "missile_tail",
+						},
+					},
+				}
+			},
+
 			Effects =
 			{
 				ImpactDevice =
@@ -217,7 +248,15 @@ table.insert(Projectiles,
 					["sandbags"] = "effects/bullet_sandbag_hit.lua",
 				},
 				Impact =
-				{--releases a mortar on hit
+				{
+					["device"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+					["antiair"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+					["foundations"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+					["rocks01"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+					["shield"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+					["default"] = "mods/weapon_pack/effects/rocket_structure_hit.lua",
+
+					--releases a mortar on hit
 					--["default"] = { Effect = "effects/mortar_air_burst.lua", Projectile = { Count = 1, Type = "mortar", Speed = -300, StdDev = 0.1 }, Terminate = true, },
 					--["firebeam"] = { Effect = "effects/bullet_armor_ricochet.lua", Projectile = { Count = 1, Type = "flaminghullbreaker", Speed = 0, StdDev = 0 }, Terminate = true, }
 				},--beam interactions can be placed in the Impact table. Also works with "laser" and "magnabeam"
