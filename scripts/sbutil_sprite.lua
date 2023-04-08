@@ -27,18 +27,18 @@ function SpriteSheet(texture, iterations, iterations_per_row, duration)
 	--example usage: SpriteSheet(path .. "/sprite_sheet.png", 12, 4, 0.08)
 	local Frames = {}
 	for i = 0, iterations - 1, 1 do
-		table.insert(Frames, 
-		{ 
-			texture = texture, 
-			left = (i % iterations_per_row) / iterations_per_row,
-			right = ((i % iterations_per_row) + 1) / iterations_per_row,
-			top = math.floor(i / iterations_per_row) / math.ceil(iterations / iterations_per_row),
-			bottom = math.floor((i / iterations_per_row) + 1) / math.ceil(iterations / iterations_per_row)
-		})
+		table.insert(Frames,
+				{
+					texture = texture,
+					left = (i % iterations_per_row) / iterations_per_row,
+					right = ((i % iterations_per_row) + 1) / iterations_per_row,
+					top = math.floor(i / iterations_per_row) / math.ceil(iterations / iterations_per_row),
+					bottom = math.floor((i / iterations_per_row) + 1) / math.ceil(iterations / iterations_per_row)
+				})
 	end
 	Frames.duration = duration
 	Frames.mipmap = true
-	
+
 	return Frames
 end
 
@@ -48,17 +48,17 @@ function MoveTexture(iterations, duration, texture, startLeft, startRight, start
 	--example usage: "MoveTexture(30, 0.04, path .. "/animated_texture.png", 0.5, 1, 0, 1, 0, 1, 0, 1)" will move the left crop from middle of image to left side of image.
 	local Frames = {}
 	for i = 0, iterations - 1, 1 do
-		table.insert(Frames, 
-		{ 
-			texture = texture, 
-			left = startLeft - (i * (moveLeft/iterations)),
-			right = startRight - (i * (moveRight/iterations)),
-			top = startTop - (i * (moveTop/iterations)),
-			bottom = startBottom - (i * (moveBottom/iterations)),
-		})
+		table.insert(Frames,
+				{
+					texture = texture,
+					left = startLeft - (i * (moveLeft/iterations)),
+					right = startRight - (i * (moveRight/iterations)),
+					top = startTop - (i * (moveTop/iterations)),
+					bottom = startBottom - (i * (moveBottom/iterations)),
+				})
 	end
 	Frames.duration = duration
 	Frames.mipmap = true
-	
+
 	return Frames
 end

@@ -1,14 +1,60 @@
 dofile("scripts/forts.lua") --needed for scripts
 
---function to add metal to a team that got hit by a specific projectile
---function OnProjectileDestroyed(nodeId, teamId, saveName, structureIdHit) --checks when a projectile is destroyed and wich team it hit
---    if saveName == "Metalpack" and structureIdHit ~= 0 then --if the projectile is "metalpack" and hit a fort owned by a team:
---        local teamHit = GetStructureTeam(structureIdHit)--checks what team got hit
---        AddResources(teamHit , { metal = 200, energy = 10}, true, Vec3(0,0)) --the fort of that team gets these bonus ressources
---    end
---    if saveName == "flamingMetalpack" and structureIdHit ~= 0 then --every projectile needs to be individually defined
---        local teamHit = GetStructureTeam(structureIdHit)
---        AddResources(teamHit , { metal = 100, energy = 5}, true, Vec3(0,0))
---		Log("100 metal received") --you can also log when a projectile gets destroyed. I used this for "Buggos Invasion" wave system
---    end
---end
+function Load(gameStart)
+    data.projectiles = {}
+end
+
+function OnRestart()
+    data.projectiles = {}
+end
+
+--team 1 and 2 are AI sides, 101 and 102 are player sides
+
+function OnWeaponFired(teamId, saveName, weaponId, projectileNodeId, projectileNodeIdFrom)
+    Log(tostring(AA_NodeVelocity(projectileNodeId) ) )
+    if saveName == "cram" then
+        for i = 20,1,-1
+            do
+            local newVec3x = AA_NodeVelocity(projectileNodeId).x + (i * 100) - 1000
+            local newVec3 = Vec3(newVec3x,AA_NodeVelocity(projectileNodeId).y,0)
+            ScheduleCall(0.002 + (i / 10), dlc2_CreateProjectile, "crambullet", "cramscript", teamId, GetWeaponHardpointPosition(weaponId), newVec3, 50)
+        end
+    end
+end
+
+
+function OnProjectileDestroyed(nodeId, teamId, saveName, structureIdHit)
+    -- forget destroyed projectiles
+    for k, v in ipairs(data.projectiles) do
+        if v == nodeId then
+            table.remove(data.projectiles, k)
+            break
+        end
+    end
+end
+
+function Update(frame)
+    -- how many projectiles are there currently?
+    --Log(frame .. " has " .. #data.projectiles .. " in flight")
+end
+
+function FindTrackedProjectile(id)
+    for k,v in ipairs(data.TrackedProjectiles) do
+        if v.ProjectileNodeId == id then
+            return v
+        end
+    end
+    return nil
+end
+
+function TrackProjectile(nodeId)
+    local nodeTeamId = NodeTeam(nodeId) -- returns TEAM_ANY if non-existent
+    if nodeTeamId%MAX_SIDES == enemyTeamId then -- node may have changed team since firing
+        table.insert(data.TrackedProjectiles, { ProjectileNodeId = nodeId, AntiAirWeapons = {}, Claims = {} })
+    end
+end
+
+function AA_NodeVelocity(id)
+    if id < 0 then return FindTrackedProjectile(id).Vel end
+    return NodeVelocity(id)
+end

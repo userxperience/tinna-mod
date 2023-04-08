@@ -19,44 +19,43 @@ MinWindEfficiency = 1 --for turbines
 MaxWindHeight = 0 --for turbines
 MaxRotationalSpeed = 0 --for turbines
 
-FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
+--FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
 ConstructEffect = "effects/device_upgrade.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/sniper_explode.lua"
-ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not once like FireEffect
-ReloadEffect = "effects/sniper_ap_reload.lua"
+--ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not once like FireEffect
+--ReloadEffect = "effects/sniper_ap_reload.lua"
 ReloadEffectOffset = -.5
-Projectile = "rollingthunderrocket" --shoots the new projectile
+Projectile = "crambullet" --shoots the new projectile
 BarrelLength = 100.0 --helps to offset the firing arc from the centre of the weapon sprite
 MinFireClearance = 500 --I dunno what these three do xD
 FireClearanceOffsetInner = 20
 FireClearanceOffsetOuter = 40
-ReloadTime = 35 --X seconds of reload time
+ReloadTime = 5 --X seconds of reload time
 ReloadTimeIncludesBurst = false --starts reloading while shooting if true
-MinFireSpeed = 500 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
-MaxFireSpeed = 3000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
+MinFireSpeed = 10000 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
+MaxFireSpeed = 10000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
 MinFireRadius = 420 --size of the firing arc (start)
 MaxFireRadius = 1069--size of the firing arc (end)
 MinVisibility = 0.3--for the system that weapons placed higher up have a bigger arc
 MaxVisibilityHeight = 700 --at this (visibility floor on maps) height the weapon has its greatest arc
-MinFireAngle = 50 --bottom fire angle
+MinFireAngle = -100 --bottom fire angle
 MaxFireAngle = 100 --top fire angle
 MouseSensitivityFactor = 0.5 --no idea
 KickbackMean = 50 --How much your mouse if moved when shooting
 KickbackStdDev = 0 --deviation from KickbackMean (between 50-7 & 50+7)
 PanDuration = 0 --no idea
-FireStdDev = 0.01 --how inaccurate the weapon is
+FireStdDev = 0.001 --how inaccurate the weapon is
 FireStdDevAuto = 0--inaccuracy specifically when pressing "e" on the weapon (autofire)
-FireDelay = 0.15 --seconds before the weapon shoots when pressing fire
-RoundPeriod = 1.35 --how long a single shot lasts (time after shots, adds to reload time)
-Recoil = 400000 --make this number really really high and you will see what it does xD
-EnergyFireCost = 4000 --energy cost each time you shoot
-MetalFireCost = 50 --same but with metal instead
+FireDelay = 0 --seconds before the weapon shoots when pressing fire
+RoundPeriod = 0 --how long a single shot lasts (time after shots, adds to reload time)
+Recoil = 40000 --make this number really really high and you will see what it does xD
+EnergyFireCost = 1 --energy cost each time you shoot
+MetalFireCost = 1 --same but with metal instead
 AutofireCloseDoorTicks = 1.5*25 --How many ticks until the door closes after you fire (25 is one second)
-RoundsEachBurst = 10 --how many shots in a burst
-RoundPeriod = 0.2 --time between shots in a burst in seconds
+RoundsEachBurst = 1 --how many shots in a burst
+RoundPeriod = 0.02 --time between shots in a burst in seconds
 DefaultFireAngle = (MinFireAngle + MaxFireAngle)/2
-RetriggerFireEffect = true --plays the fire sound effect again when burst shots
 IgnitePlatformOnDestruct = true
 StructureSplashDamage = 200
 StructureSplashDamageMaxRadius = 150
@@ -72,25 +71,25 @@ CanOverheat = false --overheats like a machine gun
 dofile("effects/device_smoke.lua") --effect that shows smoke when the weapon is damaged
 SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
 
-Sprites = --defines new sprites that can be used by any weapon
-{
-    {
-        Name = "rollingthunder-base", --the main part
-        States =
-        {
-            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
-            Idle = Normal,
-        },
-    },
-    {
-        Name = "rollingthunder-head", --the gun barrel
-        States =
-        {
-            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.png" }, mipmap = true, }, },
-            Idle = Normal,
-        },
-    },
-}
+--Sprites = --defines new sprites that can be used by any weapon
+--{
+--    {
+--        Name = "rollingthunder-base", --the main part
+--        States =
+--        {
+--            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+--            Idle = Normal,
+--        },
+--    },
+--    {
+--        Name = "rollingthunder-head", --the gun barrel
+--        States =
+--        {
+--            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.png" }, mipmap = true, }, },
+--            Idle = Normal,
+--        },
+--    },
+--}
 
 Root =
 {
@@ -115,8 +114,8 @@ Root =
                 {
                     Name = "Hardpoint0", --where the projectile is ejected from
                     Angle = 90,
-                    Pivot = { -0.17, -0.15 },
-                    PivotOffset = { 0, 0 },
+                    Pivot = { 1, 0 },
+                    PivotOffset = { 1, 0 },
                 },
                 {
                     Name = "LaserSight", --only works if you use a laser sight (like eagle eye does with most guns)
