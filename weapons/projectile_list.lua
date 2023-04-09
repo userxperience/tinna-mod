@@ -86,7 +86,8 @@ table.insert(Projectiles,
 				},
 			},
 			DamageMultiplier =
-			{},
+			{
+			},
 		})
 
 
@@ -166,17 +167,26 @@ end
 local crambullet = DeepCopy(FindProjectile("machinegun"))
 if crambullet then
 	crambullet.SaveName = "crambullet"
-	crambullet.Gravity = 500
-	crambullet.ProjectileDrag = 30 --drag, negative value will make projectile accelerate
+	crambullet.Gravity = 1000
+	crambullet.ProjectileDrag = 10 --drag, negative value will make projectile accelerate
 	crambullet.ProjectileMass = 16
 	crambullet.DrawBlurredProjectile = true
+	crambullet.MaxAge = 2.5
+	crambullet.DamageMultiplier =
+	{	{	Direct = 0,	Fire = 0,	SaveName = "reactor",	Splash = 0,	},
+	{	SaveName = "bracing",	Direct = 0.2,},
+	{	SaveName = "armour",	Direct = 0.2,},
+	{	SaveName = "door",	Direct = 0.2,},
+	{	SaveName = "device", Direct = 0.2 },
+	{	SaveName = "weapon", Direct = 0.2 },
+	{	SaveName = "portal",	Direct = 0.2,},	}
 	crambullet.Projectile =
 	{
 	Root =
 	{
 	Name = "Root",
 	Angle = -90,
-	Sprite = path .. "/weapons/kirov/base.png",
+	Sprite = path .. "/effects/media/machinegunbullet",
 	PivotOffset = {0, 0},
 	Scale = 1.1,
 	}

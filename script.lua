@@ -8,16 +8,14 @@ function OnRestart()
     data.projectiles = {}
 end
 
---team 1 and 2 are AI sides, 101 and 102 are player sides
-
 function OnWeaponFired(teamId, saveName, weaponId, projectileNodeId, projectileNodeIdFrom)
-    Log(tostring(AA_NodeVelocity(projectileNodeId) ) )
     if saveName == "cram" then
         for i = 20,1,-1
             do
-            local newVec3x = AA_NodeVelocity(projectileNodeId).x + (i * 100) - 1000
-            local newVec3 = Vec3(newVec3x,AA_NodeVelocity(projectileNodeId).y,0)
-            ScheduleCall(0.002 + (i / 10), dlc2_CreateProjectile, "crambullet", "cramscript", teamId, GetWeaponHardpointPosition(weaponId), newVec3, 50)
+            local newVec3x = AA_NodeVelocity(projectileNodeId).x
+            local newVec3 = Vec3(newVec3x,(AA_NodeVelocity(projectileNodeId).y),0)
+            ScheduleCall(0.02 + (i / 25), dlc2_CreateProjectile, "crambullet", "cramscript", teamId, GetWeaponHardpointPosition(weaponId), newVec3, 10)
+            ScheduleCall(0.04 + (i / 25), dlc2_CreateProjectile, "crambullet", "cramscript", teamId, GetWeaponHardpointPosition(weaponId), newVec3, 10)
         end
     end
 end
