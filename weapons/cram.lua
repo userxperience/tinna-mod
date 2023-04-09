@@ -1,121 +1,115 @@
-Scale = 1 --general size of the hitbox, ususally kept at 1
-SelectionWidth = 70.0 --width of the hitbox. ~25 is a grid square
-SelectionHeight = 80 --slightly less than 2 grids, similar to sniper
-SelectionOffset = { -35, -80 } --make first number negative half of selectionwidth, and second number negative selectionheight except if you want the weapon to overlap with ground.
+Scale = 1
+SelectionWidth = 50.0
+SelectionHeight = 80.0
+SelectionOffset = { -5, -80 }
 RecessionBox =
-
 {
     Size = { 200, 25 },
     Offset = { -300, -50 },
-} --keep this from the template. Experiment if you want to know details.
+}
 
-WeaponMass = 150.0 --weight of weapon
-HitPoints = 250.0 --HP until destroyed. 110 is damage from a sniper shot
+WeaponMass = 90.0
+HitPoints = 300.0
+DestroyProjectile = nil
 EnergyProductionRate = 0.0
 MetalProductionRate = 0.0
 EnergyStorageCapacity = 0.0
 MetalStorageCapacity = 0.0
-MinWindEfficiency = 1 --for turbines
-MaxWindHeight = 0 --for turbines
-MaxRotationalSpeed = 0 --for turbines
-
---FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
-ConstructEffect = "effects/device_upgrade.lua"
-CompleteEffect = "effects/device_complete.lua"
-DestroyEffect = "effects/sniper_explode.lua"
---ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not once like FireEffect
---ReloadEffect = "effects/sniper_ap_reload.lua"
-ReloadEffectOffset = -.5
-Projectile = "crambullet" --shoots the new projectile
-BarrelLength = 100.0 --helps to offset the firing arc from the centre of the weapon sprite
-MinFireClearance = 500 --I dunno what these three do xD
-FireClearanceOffsetInner = 20
-FireClearanceOffsetOuter = 40
-ReloadTime = 1 --X seconds of reload time
-ReloadTimeIncludesBurst = false --starts reloading while shooting if true
-MinFireSpeed = 5000 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
-MaxFireSpeed = 5000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
-MinFireRadius = 420 --size of the firing arc (start)
-MaxFireRadius = 1069--size of the firing arc (end)
-MinVisibility = 0.3--for the system that weapons placed higher up have a bigger arc
-MaxVisibilityHeight = 700 --at this (visibility floor on maps) height the weapon has its greatest arc
-MinFireAngle = -40 --bottom fire angle
-MaxFireAngle = 80 --top fire angle
-MouseSensitivityFactor = 0.5 --no idea
-KickbackMean = 50 --How much your mouse if moved when shooting
-KickbackStdDev = 0 --deviation from KickbackMean (between 50-7 & 50+7)
-PanDuration = 0 --no idea
-FireStdDev = 0.001 --how inaccurate the weapon is
-FireStdDevAuto = 0--inaccuracy specifically when pressing "e" on the weapon (autofire)
-FireDelay = 0 --seconds before the weapon shoots when pressing fire
-RoundPeriod = 2 --how long a single shot lasts (time after shots, adds to reload time)
-Recoil = 40000 --make this number really really high and you will see what it does xD
-EnergyFireCost = 1 --energy cost each time you shoot
-MetalFireCost = 1 --same but with metal instead
-AutofireCloseDoorTicks = 1.5*25 --How many ticks until the door closes after you fire (25 is one second)
-RoundsEachBurst = 1.5 --how many shots in a burst
-RoundPeriod = 0.02 --time between shots in a burst in seconds
-DefaultFireAngle = (MinFireAngle + MaxFireAngle)/2
+MinWindEfficiency = 1
+MaxWindHeight = 0
+MaxRotationalSpeed = 0
 IgnitePlatformOnDestruct = true
-StructureSplashDamage = 200
+StructureSplashDamage = 100
 StructureSplashDamageMaxRadius = 150
 
+FireEffect = path .. "/effects/firecram.lua"
+ShellEffect = "effects/shell_eject_small.lua"
+ConstructEffect = "effects/device_construct.lua"
+CompleteEffect = "effects/device_complete.lua"
+DestroyEffect = "effects/machinegun_explode.lua"
+ReloadEffect = "effects/minigun_reload.lua"
+ReloadEffectOffset = -0.5
+Projectile = "crambullet"
+BarrelLength = 90.0
+MinFireClearance = 500
+FireClearanceOffsetInner = 20
+FireClearanceOffsetOuter = 40
+ReloadTime = 1
+MinFireSpeed = 9000
+MaxFireSpeed = 9000
+MinFireRadius = 300.0
+MaxFireRadius = 600.0
+MinVisibility = 0.9
+MaxVisibilityHeight = 600
+MinFireAngle = -30
+MaxFireAngle = 100
+KickbackMean = 15
+KickbackStdDev = 3
+MouseSensitivityFactor = 0.5
+PanDuration = 0
+FireStdDev = 0.015
+FireStdDevAuto = 0.01
+Recoil = 20000
+EnergyFireCost = 100.0
+MetalFireCost = 50
 ShowFireAngle = true
-ShowFireSpeed = true
+RoundsEachBurst = 40
+RoundPeriod = 0.04
+DoorCloseDelay = 0.75
 
 CanOverheat = true --overheats like a machine gun
-HeatPeriod = 5.5 --maximum heat capacity
-CoolPeriod = 5 --seconds until the weapon goes from 100% heat to 0% heat (passively)
-CoolPeriodOverheated = 5 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
+HeatPeriod = 3 --maximum heat capacity
+CoolPeriod = 60 --seconds until the weapon goes from 100% heat to 0% heat (passively)
+CoolPeriodOverheated = 60 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
 
 dofile("effects/device_smoke.lua") --effect that shows smoke when the weapon is damaged
 SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
 
---Sprites = --defines new sprites that can be used by any weapon
---{
---    {
---        Name = "rollingthunder-base", --the main part
---        States =
---        {
---            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
---            Idle = Normal,
---        },
---    },
---    {
---        Name = "rollingthunder-head", --the gun barrel
---        States =
---        {
---            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.png" }, mipmap = true, }, },
---            Idle = Normal,
---        },
---    },
---}
+Sprites = --defines new sprites that can be used by any weapon
+{
+    {
+        Name = "cram-base", --the main part
+        States =
+        {
+            Normal = { Frames = { { texture = path .. "/weapons/cram/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+            Idle = Normal,
+        },
+    },
+    {
+        Name = "cram-head", --the gun barrel
+        States =
+        {
+            Normal = { Frames = { { texture = path .. "/weapons/cram/head.png" }, mipmap = true, }, },
+            Idle = Normal,
+        },
+    },
+}
 
 Root =
 {
-    Name = "Rolling thunder", --name doesn't matter
+    Name = "cram", --name doesn't matter
     Angle = 0, --how many degrees it's turned
-    Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture
+    Pivot = { 0, -0.5 }, --how much offset the sprite has from the centre of the picture
     PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
-    Sprite = "rollingthunder-base", --sprite name DOES matter
+    Sprite = "cram-base", --sprite name DOES matter
     UserData = 0, --when the sprite shows up during building of the weapon. 0 = instantly, 100 = completely finished
 
-    ChildrenInFront = --connected sprites in front
+    ChildrenBehind = --connected sprites in front
     {
         {
             Name = "Head",
             Angle = 0,
-            Pivot = { -0.25, -0.1 },
-            PivotOffset = { 0.25, 0.05 }, --how much offset the sprite has from the centre of the previous picture it's connected to
-            Sprite = "rollingthunder-head",
+            Pivot = { -0.1, -0.4 },
+            PivotOffset = { -0.0, 0.1 }, --how much offset the sprite has from the centre of the previous picture it's connected to
+            Sprite = "cram-head",
             UserData = 50, --shows up halfway through building
             ChildrenInFront =
             {
                 {
                     Name = "Hardpoint0", --where the projectile is ejected from
                     Angle = 90,
-                    Pivot = { 1, 0 },
-                    PivotOffset = { 1, 0 },
+                    Pivot = { 0, 0 },
+                    PivotOffset = { 0, 0 },
                 },
                 {
                     Name = "LaserSight", --only works if you use a laser sight (like eagle eye does with most guns)

@@ -180,17 +180,6 @@ if crambullet then
 	{	SaveName = "device", Direct = 0.2 },
 	{	SaveName = "weapon", Direct = 0.2 },
 	{	SaveName = "portal",	Direct = 0.2,},	}
-	crambullet.Projectile =
-	{
-	Root =
-	{
-	Name = "Root",
-	Angle = -90,
-	Sprite = path .. "/effects/media/machinegunbullet",
-	PivotOffset = {0, 0},
-	Scale = 1.1,
-	}
-	}
 end
 table.insert(Projectiles, crambullet)
 
