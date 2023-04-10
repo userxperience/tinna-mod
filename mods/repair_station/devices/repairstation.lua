@@ -1,0 +1,1 @@
+RepairFieldRadius = 1000 --used to be 270
