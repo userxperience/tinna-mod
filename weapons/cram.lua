@@ -59,8 +59,8 @@ DoorCloseDelay = 0.75
 
 CanOverheat = true --overheats like a machine gun
 HeatPeriod = 3 --maximum heat capacity
-CoolPeriod = 60 --seconds until the weapon goes from 100% heat to 0% heat (passively)
-CoolPeriodOverheated = 60 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
+CoolPeriod = 45 --seconds until the weapon goes from 100% heat to 0% heat (passively)
+CoolPeriodOverheated = 45 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
 
 dofile("effects/device_smoke.lua") --effect that shows smoke when the weapon is damaged
 SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
