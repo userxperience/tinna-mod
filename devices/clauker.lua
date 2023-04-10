@@ -1,4 +1,4 @@
---based off of tanya's mod, which i think based it off the base game's derrick
+--derrick is taken from base game but enabled
 ConstructEffect = "effects/device_construct.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/battery_explode.lua"
@@ -6,17 +6,16 @@ Scale = 1
 SelectionWidth = 160.0
 SelectionHeight = 130.0
 SelectionOffset = { 0.0, -140.0 }
-Mass = 80.0
+Mass = 200 --doesnt really matter
 HitPoints = 600.0
-DestroyProjectile = nil
 EnergyProductionRate = -40.0
 MetalProductionRate = 22
 MinWindEfficiency = 1
 MaxWindHeight = 0
 MaxRotationalSpeed = 0
 NeutralColour = 1
-IncendiaryRadius = 500
-IncendiaryRadiusHeated = 700
+IncendiaryRadius = 300
+IncendiaryRadiusHeated = 400
 
 dofile("effects/device_smoke.lua")
 SmokeEmitter = StandardDeviceSmokeEmitter
