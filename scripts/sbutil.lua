@@ -151,7 +151,7 @@ end
 
 function SpriteSheet(texture, iterations, iterations_per_row, duration)
 	--create an animated Frames table from a sprite sheet.
-	--iterations is total amount of frames. 
+	--iterations is total amount of frames.
 	--iterations_per_column is the number of frames per row.
 	--duration is each frame's duration. (game works on multiples of 0.04)
 	--example usage: SpriteSheet(path .. "/sprite_sheet.png", 12, 4, 0.08)
@@ -191,10 +191,4 @@ function MoveTexture(iterations, duration, texture, startLeft, startRight, start
 	Frames.mipmap = true
 
 	return Frames
-end
-
-function OnWeaponFired(teamId, saveName, weaponId, projectileNodeId, projectileNodeIdFrom)
-	--if saveName == "cram" then
-		Log("Cram fired!")
-	--end
 end

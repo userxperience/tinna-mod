@@ -183,3 +183,107 @@ if crambullet then
 end
 table.insert(Projectiles, crambullet)
 
+
+
+
+lobbershellbaseimpact = { Effect = "effects/mortar_air_burst.lua", Projectile = { Count = 1, Type = "mortar2", Speed = 8000, StdDev = 0 }, Splash = false, Offset = 0, Terminate = true }
+lobbershellairdetonation = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,} --projectiles are released with script
+
+local lobbershell = DeepCopy(FindProjectile("cannon"))
+if lobbershell then
+	lobbershell.SaveName = "lobbershell"
+	lobbershell.ProjectileMass = 16
+	lobbershell.ProjectileDrag = 0.5
+	lobbershell.Impact = 20000
+	lobbershell.DeflectedByShields = false
+	lobbershell.PassesThroughMaterials = false
+	lobbershell.ProjectileThickness = 12.5
+	lobbershell.BeamTileRate = 0.02
+	lobbershell.BeamScrollRate = 0.0
+	lobbershell.ProjectileDamage = 0.0
+	lobbershell.ProjectileSplashDamage = 0.0
+	lobbershell.ProjectileSplashDamageMaxRadius = 165.0
+	lobbershell.ProjectileSplashMaxForce = 10000 -- moderate shockwave
+	lobbershell.CanBeShotDown = true
+	lobbershell.SpeedIndicatorFactor = 0.25
+
+lobbershell.Effects =
+	{
+	Impact =
+	{
+	["device"] = lobbershellbaseimpact,
+	["antiair"] = lobbershellbaseimpact,
+	["foundations"] = lobbershellbaseimpact,
+	["rocks01"] = lobbershellbaseimpact,
+	["shield"] = lobbershellbaseimpact,
+	["default"] = lobbershellbaseimpact,
+	},
+	AirDestroy =
+	{
+	["shield1"] = lobbershellbaseimpact,
+	},
+	Deflect =
+	{
+	["armour"] = "effects/armor_ricochet.lua",
+	["door"] = "effects/armor_ricochet.lua",
+	["shield"] = "effects/energy_shield_ricochet.lua",
+	},
+	Age =
+	{
+		['t40'] = lobbershellairdetonation
+	}
+	}
+
+end
+table.insert(Projectiles, lobbershell)
+
+local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
+if lobberbomblet then
+	lobberbomblet.SaveName = "lobberbomblet"
+	lobberbomblet.ProjectileMass = 500
+	lobberbomblet.ProjectileDrag = 300
+	lobberbomblet.ProjectileDamage = 5
+	lobberbomblet.ProjectileSplashDamage = 10
+	lobberbomblet.Impact = 0
+	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
+
+	lobberbomblet.Effects = {
+		Impact = {
+			["default"] = { Effect = path .. "/effects/lobberbombletimpact.lua", Projectile = nil, Offset = 0, Terminate = true },
+		}
+	}
+    end
+    table.insert(Projectiles, lobberbomblet)
+
+
+    --local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
+    --if lobberbomblet then
+    --	lobberbomblet.SaveName = "lobberbomblet"
+    --	lobberbomblet.ProjectileMass = 500
+    --	lobberbomblet.ProjectileDrag = 300
+    --	lobberbomblet.ProjectileDamage = 5
+    --	lobberbomblet.ProjectileSplashDamage = 0
+    --	lobberbomblet.Impact = 0
+    --	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
+    --
+    --	lobberbomblet.Effects = {
+    --		Impact = {
+    --			["device"] = lobbershellbaseimpact,
+    --			["antiair"] = lobbershellbaseimpact,
+    --			["foundations"] = lobbershellbaseimpact,
+    --			["rocks01"] = lobbershellbaseimpact,
+    --			["shield"] = lobbershellbaseimpact,
+    --			["default"] = lobbershellbaseimpact,
+    --		}
+    --	}
+    --end
+    --table.insert(Projectiles, lobberbomblet)
+
+
+
+    --local template = DeepCopy(FindProjectile("machinegun"))
+    --if template then
+    --	template.SaveName = "template"
+    --
+    --end
+    --table.insert(Projectiles, template)
