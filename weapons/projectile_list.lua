@@ -187,7 +187,7 @@ table.insert(Projectiles, crambullet)
 
 
 lobbershellbaseimpact = { Effect = "effects/mortar_air_burst.lua", Projectile = { Count = 1, Type = "mortar2", Speed = 8000, StdDev = 0 }, Splash = false, Offset = 0, Terminate = true }
-lobbershellairdetonation = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,} --projectiles are released with script
+lobbershellairdetonation = { Effect = path .. "/effects/lobbershellairdetonation.lua", Projectile = nil, Terminate = true, Splash = false,} --projectiles are released with script
 
 local lobbershell = DeepCopy(FindProjectile("cannon"))
 if lobbershell then
@@ -206,6 +206,19 @@ if lobbershell then
 	lobbershell.ProjectileSplashMaxForce = 10000 -- moderate shockwave
 	lobbershell.CanBeShotDown = true
 	lobbershell.SpeedIndicatorFactor = 0.25
+	lobbershell.DrawBlurredProjectile = false
+	lobbershell.Projectile =
+	{
+	Root =
+	{
+	Name = "Root",
+	Angle = 90,
+	Sprite = path .. "/effects/media/lobbershellprojectile.tga",
+	PivotOffset = {0, 0},
+	Scale = 4,
+	}
+	}
+
 
 lobbershell.Effects =
 	{
@@ -249,7 +262,7 @@ if lobberbomblet then
 
 	lobberbomblet.Effects = {
 		Impact = {
-			["default"] = { Effect = path .. "/effects/lobberbombletimpact.lua", Projectile = nil, Offset = 0, Terminate = true },
+			["default"] = "effects/impact_medium.lua",
 		}
 	}
     end

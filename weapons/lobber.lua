@@ -1,15 +1,14 @@
 Scale = 1 --general size of the hitbox, ususally kept at 1
-SelectionWidth = 70.0 --width of the hitbox. ~25 is a grid square
-SelectionHeight = 80 --slightly less than 2 grids, similar to sniper
-SelectionOffset = { -35, -80 } --make first number negative half of selectionwidth, and second number negative selectionheight except if you want the weapon to overlap with ground.
+SelectionWidth = 125.0 --width of the hitbox. ~25 is a grid square
+SelectionHeight = 65 --slightly less than 2 grids, similar to sniper
+SelectionOffset = { -67.5, -65 } --make first number negative half of selectionwidth, and second number negative selectionheight except if you want the weapon to overlap with ground.
 RecessionBox =
-
 {
     Size = { 200, 25 },
     Offset = { -300, -50 },
 } --keep this from the template. Experiment if you want to know details.
 
-FireEffect = path .. "/effects/firelobber.lua" --effect that has sprites and sounds when shooting
+FireEffect = "effects/fire_cannon.lua" --effect that has sprites and sounds when shooting
 ConstructEffect = "effects/device_upgrade.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/sniper_explode.lua"
@@ -17,7 +16,7 @@ ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not onc
 ReloadEffect = "effects/sniper_ap_reload.lua"
 ReloadEffectOffset = -.5
 Projectile = "lobbershell" --shoots the new projectile
-BarrelLength = 100.0 --helps to offset the firing arc from the centre of the weapon sprite
+BarrelLength = 150.0 --helps to offset the firing arc from the centre of the weapon sprite
 MinFireClearance = 500 --I dunno what these three do xD
 FireClearanceOffsetInner = 20
 FireClearanceOffsetOuter = 40
@@ -46,19 +45,19 @@ IncendiaryRadius = 200
 IncendiaryRadiusHeated = 250
 IgnitePlatformOnDestruct = true
 
-local kirovmultiplier = 3 -- 0.07 to reach a medium ranged map's fort in 1 minute 0.035 for 2 minutes
+local lobbermultiplier = 3 -- 0.07 to reach a medium ranged map's fort in 1 minute 0.035 for 2 minutes
 
-MinFireSpeed = 1000 * kirovmultiplier
-MaxFireSpeed = 3000 * kirovmultiplier
-MinAgeTrigger = 1 / kirovmultiplier * 2
-MaxAgeTrigger = 6 / kirovmultiplier * 2
+MinFireSpeed = 1000 * lobbermultiplier
+MaxFireSpeed = 3000 * lobbermultiplier
+MinAgeTrigger = 1 / lobbermultiplier * 2
+MaxAgeTrigger = 6 / lobbermultiplier * 2
 MinFireRadius = 250
 MaxFireRadius = 2500
 MinFireSpread = 8
 MinVisibility = 1
 MaxVisibilityHeight = 500
 MinFireAngle = -30
-MaxFireAngle = 60
+MaxFireAngle = 45
 KickbackMean = 10
 KickbackStdDev = 3
 MouseSensitivityFactor = 0.6
@@ -87,10 +86,18 @@ Sprites = --defines new sprites that can be used by any weapon
         },
     },
     {
-        Name = "lobber-head", --the gun barrel
+        Name = "lobber-head", --the gun
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/lobber/head.png" }, mipmap = true, }, },
+            Idle = Normal,
+        },
+    },
+    {
+        Name = "lobber-barrel", --the gun barrel
+        States =
+        {
+            Normal = { Frames = { { texture = path .. "/weapons/lobber/barrel.png" }, mipmap = true, }, },
             Idle = Normal,
         },
     },
@@ -98,30 +105,24 @@ Sprites = --defines new sprites that can be used by any weapon
 
 Root =
 {
-    Name = "Rolling thunder", --name doesn't matter
+    Name = "Lobber", --name doesn't matter
     Angle = 0, --how many degrees it's turned
     Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture
     PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
     Sprite = "lobber-base", --sprite name DOES matter
     UserData = 0, --when the sprite shows up during building of the weapon. 0 = instantly, 100 = completely finished
 
-    ChildrenInFront = --connected sprites in front
+    ChildrenBehind =  --connected sprites in front
     {
         {
             Name = "Head",
             Angle = 0,
-            Pivot = { -0.25, -0.1 },
+            Pivot = { -0.09, -0.1 },
             PivotOffset = { 0.25, 0.05 }, --how much offset the sprite has from the centre of the previous picture it's connected to
             Sprite = "lobber-head",
             UserData = 50, --shows up halfway through building
-            ChildrenInFront =
+            ChildrenBehind =
             {
-                {
-                    Name = "Hardpoint0", --where the projectile is ejected from
-                    Angle = 90,
-                    Pivot = { -0.17, -0.15 },
-                    PivotOffset = { 0, 0 },
-                },
                 {
                     Name = "LaserSight", --only works if you use a laser sight (like eagle eye does with most guns)
                     Angle = 90,
@@ -133,6 +134,23 @@ Root =
                     Angle = 0,
                     Pivot = { -0.17, -0.15 },
                     PivotOffset = { 0, 0 },
+                },
+                {
+                    Name = "Barrel",
+                    Angle = 0,
+                    Pivot = { -0.25, -0.1 },
+                    PivotOffset = { 0.25, 0.05 }, --how much offset the sprite has from the centre of the previous picture it's connected to
+                    Sprite = "lobber-barrel",
+                    UserData = 50, --shows up halfway through building
+                    ChildrenInFront =
+                    {
+                        {
+                            Name = "Hardpoint0", --where the projectile is ejected from
+                            Angle = 90,
+                            Pivot = { -0.04, -0.2 },
+                            PivotOffset = { 0, 0 },
+                        },
+                    },
                 },
             },
         },

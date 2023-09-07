@@ -5,9 +5,9 @@ dofile("scripts/forts.lua")
 --custom lobber bomblet release script
 function OnProjectileDestroyed(nodeId, teamId, saveName, structureIdHit, destroyType)
     if saveName == "lobbershell" and (destroyType == 9 or destroyType == 2 or destroyType ==3)  then
-        for i = 10,1,-1 do
-            local velX = NodeVelocity(nodeId).x + GetRandomInteger(-700, 0, "random deviation")
-            local velY = NodeVelocity(nodeId).y+  GetRandomInteger(-700, 0, "random deviation")
+        for i = 15,1,-1 do
+            local velX = NodeVelocity(nodeId).x + GetRandomInteger(-800, -200, "random deviation")
+            local velY = NodeVelocity(nodeId).y+  GetRandomInteger(-1000, -200, "random deviation")
             local posX = NodePosition(nodeId).x
             local posY = NodePosition(nodeId).y
 

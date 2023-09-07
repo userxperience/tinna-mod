@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Tinna mod.iml" filepath="$PROJECT_DIR$/.idea/Tinna mod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tinna-mod.iml" filepath="$PROJECT_DIR$/.idea/tinna-mod.iml" />
     </modules>
   </component>
 </project>

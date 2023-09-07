@@ -8,13 +8,15 @@ table.insert(Sprites, ButtonSprite("hud-launchsite-icon", "HUD/HUD-launchsite",
 		nil, ButtonSpriteBottom, nil, nil, path))
 table.insert(Sprites, ButtonSprite("hud-cram-icon", "HUD/HUD-cram",
 		nil, ButtonSpriteBottom, nil, nil, path))
+table.insert(Sprites, ButtonSprite("hud-lobber-icon", "HUD/HUD-lobber",
+		nil, ButtonSpriteBottom, nil, nil, path))
 
 table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 		{
 			Enabled = true,
 			SaveName = "rollingthunder",
 			FileName = path .. "/weapons/rollingthunder.lua",
-			Icon = "hud-rollingthunder-icon", --bottom HUD (weapon list) --TODO: add better custom HUD button
+			Icon = "hud-rollingthunder-icon", --bottom HUD (weapon list)
 			GroupButton = "hud-group-rocket", --top HUD (weapon groups)
 			--Detail = "hud-detail-rollingthunder", --left HUD (cost preview)
 			Prerequisite = "munitions",
@@ -106,11 +108,10 @@ table.insert(Weapons, IndexOfWeapon("mortar") + 1,
 		{
 			Enabled = true,
 			SaveName = "lobber",
-			Icon = "hud-lobber-icon", --bottom HUD (weapon list)
 			FileName = path .. "/weapons/lobber.lua",
-
-			GroupButton = "hud-group-rocket", --top HUD (weapon groups)
-			Prerequisite = "munitions",
+			Icon = "hud-lobber-icon",
+			GroupButton = "hud-group-rocket",
+			Prerequisite = "workshop",
 			BuildTimeComplete = 40.0,
 			ScrapPeriod = 5,
 			MetalCost = 500,
@@ -121,8 +122,8 @@ table.insert(Weapons, IndexOfWeapon("mortar") + 1,
 			MetalReclaimMax = 0.4,
 			EnergyReclaimMin = 0.15,
 			EnergyReclaimMax = 0.45,
-			MaxSpotterAssistance = 0.4, -- great benefit from spotters
-			MaxUpAngle = StandardMaxUpAngle, --add *2.5, for steeper angles
+			MaxSpotterAssistance = 0.4,
+			MaxUpAngle = StandardMaxUpAngle,
 			MaxWeaponGroupSize = 3,
 			BuildOnGroundOnly = false,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
