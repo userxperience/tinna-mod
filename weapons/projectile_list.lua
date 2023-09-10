@@ -268,6 +268,61 @@ if lobberbomblet then
     end
     table.insert(Projectiles, lobberbomblet)
 
+local gatewaymissile = DeepCopy(FindProjectile("missile2"))
+if gatewaymissile then
+	gatewaymissile.SaveName = "gatewaymissile"
+	Missile =
+	{
+		ThrustAngleExtent = 90,
+		ErraticAngleExtentStdDev = 0.01,
+		ErraticAngleExtentMax = 0.01,
+		MaxSteerPerSecond = 500,
+		MaxSteerPerSecondErratic = 0.001,
+		ErraticAnglePeriodMean = 0,
+		ErraticAnglePeriodStdDev = 0.001,
+		RocketThrust = 10000000,
+		RocketThrustChange = 6000,
+		ErraticThrust = 1.4,
+		CruiseTargetDistance = 300,
+		CruiseTargetDuration = .5,
+		TargetRearOffsetDistance = 100000,
+		MinTargetUpdateDistance = 10,
+}
+	gatewaymissile.Effects =
+	{
+		Age =
+		{
+			['t400'] = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,}
+		}
+	}
+end
+table.insert(Projectiles, gatewaymissile)
+
+
+
+local gatewaylaser = DeepCopy(FindProjectile("laser"))
+if gatewaylaser then
+	gatewaylaser.SaveName = "gatewaylaser"
+	gatewaylaser.ProjectileSprite = path .. "/weapons/media/megabeam"
+	gatewaylaser.ProjectileSpriteMipMap = true
+	gatewaylaser.DrawBlurredProjectile = false
+	gatewaylaser.ProjectileMass = 1.0
+	gatewaylaser.ProjectileDrag = 0.0
+	gatewaylaser.ProjectileIncendiary = true
+	gatewaylaser.IgnitesBackgroundMaterials = true
+	gatewaylaser.IgnitesBackgroundMaterialsPassing = true
+	gatewaylaser.IgnitesBackgroundMaterialsPassingSource = false
+	gatewaylaser.DeflectedByShields = true
+	gatewaylaser.ExplodeOnTouch = false
+	gatewaylaser.Impact = 100000
+	gatewaylaser.BeamScrollRate = -10
+	gatewaylaser.BeamOcclusionDistance = 200
+	gatewaylaser.ProjectileDamage = 10.00
+	gatewaylaser.SpeedIndicatorFactor = 0.05
+	gatewaylaser.ProjectileThickness = 30
+
+end
+table.insert(Projectiles, gatewaylaser)
 
     --local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
     --if lobberbomblet then

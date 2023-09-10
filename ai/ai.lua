@@ -2,6 +2,7 @@ ShootableProjectile["rollingthunderrocket"] = true
 ShootableProjectile["kirov"] = true
 ShootableProjectile["kirovbomb"] = true
 ShootableProjectile["kirovP2"] = true
+ShootableProjectile["rockeyebomblet"] = true
 
 data.AntiAirErrorStdDev["cram"] = Balance(2, 1)
 data.AntiAirOpenDoor["cram"] = { ["mortar"] = true, ["mortar2"] = true, }

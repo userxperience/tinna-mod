@@ -49,10 +49,10 @@ local lobbermultiplier = 3 -- 0.07 to reach a medium ranged map's fort in 1 minu
 
 MinFireSpeed = 1000 * lobbermultiplier
 MaxFireSpeed = 3000 * lobbermultiplier
-MinAgeTrigger = 1 / lobbermultiplier * 2
-MaxAgeTrigger = 6 / lobbermultiplier * 2
+MinAgeTrigger = 1 / lobbermultiplier / 1.2
+MaxAgeTrigger = 6 / lobbermultiplier / 1.2
 MinFireRadius = 250
-MaxFireRadius = 2500
+MaxFireRadius = 1500
 MinFireSpread = 8
 MinVisibility = 1
 MaxVisibilityHeight = 500

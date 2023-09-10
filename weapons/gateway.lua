@@ -5,9 +5,9 @@ SelectionOffset = { -35, -80 } --make first number negative half of selectionwid
 RecessionBox =
 
 {
-    Size = { 200, 25 },
-    Offset = { -300, -50 },
-} --keep this from the template. Experiment if you want to know details.
+    Size = { 25, 1000 },
+    Offset = { 0, -890 },
+} --recessionbox is the space in front of or above the weapon that gets changed to background bracing or doors
 
 WeaponMass = 150.0 --weight of weapon
 HitPoints = 250.0 --HP until destroyed. 110 is damage from a sniper shot
@@ -19,28 +19,24 @@ MinWindEfficiency = 1 --for turbines
 MaxWindHeight = 0 --for turbines
 MaxRotationalSpeed = 0 --for turbines
 
-FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
+FireEffect = path .. "/effects/firegateway.lua" --effect that has sprites and sounds when shooting
 ConstructEffect = "effects/device_upgrade.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/sniper_explode.lua"
 ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not once like FireEffect
 ReloadEffect = "effects/sniper_ap_reload.lua"
 ReloadEffectOffset = -.5
-Projectile = "rollingthunderrocket" --shoots the new projectile
+Projectile = "gatewaymissile" --shoots the new projectile
 BarrelLength = 100.0 --helps to offset the firing arc from the centre of the weapon sprite
-MinFireClearance = 500 --I dunno what these three do xD
-FireClearanceOffsetInner = 20
-FireClearanceOffsetOuter = 40
+
 ReloadTime = 35 --X seconds of reload time
 ReloadTimeIncludesBurst = false --starts reloading while shooting if true
 MinFireSpeed = 2000 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
 MaxFireSpeed = 3000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
-MinFireRadius = 420 --size of the firing arc (start)
-MaxFireRadius = 1069--size of the firing arc (end)
 MinVisibility = 0.3--for the system that weapons placed higher up have a bigger arc
 MaxVisibilityHeight = 700 --at this (visibility floor on maps) height the weapon has its greatest arc
-MinFireAngle = 50 --bottom fire angle
-MaxFireAngle = 100 --top fire angle
+MinFireAngle = 86
+MaxFireAngle = 94
 MouseSensitivityFactor = 0.5 --no idea
 KickbackMean = 50 --How much your mouse if moved when shooting
 KickbackStdDev = 0 --deviation from KickbackMean (between 50-7 & 50+7)
@@ -53,13 +49,23 @@ Recoil = 400000 --make this number really really high and you will see what it d
 EnergyFireCost = 4000 --energy cost each time you shoot
 MetalFireCost = 50 --same but with metal instead
 AutofireCloseDoorTicks = 1.5*25 --How many ticks until the door closes after you fire (25 is one second)
-RoundsEachBurst = 10 --how many shots in a burst
+RoundsEachBurst = 1 --how many shots in a burst
 RoundPeriod = 0.2 --time between shots in a burst in seconds
 DefaultFireAngle = (MinFireAngle + MaxFireAngle)/2
 RetriggerFireEffect = true --plays the fire sound effect again when burst shots
 IgnitePlatformOnDestruct = true
 StructureSplashDamage = 200
 StructureSplashDamageMaxRadius = 150
+
+MinFireRadius = 200.0
+MaxFireRadius = 20000.0
+ForceFireAngle = 90 --important to the missile going straight up before steering to the target
+MinFireClearance = 1000
+FireClearanceOffsetInner = 40
+FireClearanceOffsetOuter = 40
+MissileDisruptionMin = 0.5
+MissileDisruptionStdDevMin = 400
+MissileDisruptionStdDevMax = 600
 
 ShowFireAngle = true
 ShowFireSpeed = true
@@ -75,18 +81,18 @@ SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
 Sprites = --defines new sprites that can be used by any weapon
 {
     {
-        Name = "rollingthunderbase", --the main part
+        Name = "gatewaybase", --the main part
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+            Normal = { Frames = { { texture = path .. "/weapons/gateway/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
             Idle = Normal,
         },
     },
     {
-        Name = "rollingthunderhead", --the gun barrel
+        Name = "gatewayhead", --the gun barrel
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.png" }, mipmap = true, }, },
+            Normal = { Frames = { { texture = path .. "/weapons/gateway/head.png" }, mipmap = true, }, },
             Idle = Normal,
         },
     },
@@ -94,11 +100,11 @@ Sprites = --defines new sprites that can be used by any weapon
 
 Root =
 {
-    Name = "Rolling thunder", --name doesn't matter
+    Name = "Gateway", --name doesn't matter
     Angle = 0, --how many degrees it's turned
     Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture
     PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
-    Sprite = "rollingthunderbase", --sprite name DOES matter
+    Sprite = "gatewaybase", --sprite name DOES matter
     UserData = 0, --when the sprite shows up during building of the weapon. 0 = instantly, 100 = completely finished
 
     ChildrenInFront = --connected sprites in front
@@ -108,7 +114,7 @@ Root =
             Angle = 0,
             Pivot = { -0.25, -0.1 },
             PivotOffset = { 0.25, 0.05 }, --how much offset the sprite has from the centre of the previous picture it's connected to
-            Sprite = "rollingthunderhead",
+            Sprite = "gatewayhead",
             UserData = 50, --shows up halfway through building
             ChildrenInFront =
             {
