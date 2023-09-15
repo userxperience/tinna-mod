@@ -9,54 +9,54 @@ RecessionBox =
     Offset = { -300, -50 },
 } --keep this from the template. Experiment if you want to know details.
 
-WeaponMass = 150.0 --weight of weapon
-HitPoints = 250.0 --HP until destroyed. 110 is damage from a sniper shot
+WeaponMass = 150.0
+HitPoints = 250.0
 EnergyProductionRate = 0.0
 MetalProductionRate = 0.0
 EnergyStorageCapacity = 0.0
 MetalStorageCapacity = 0.0
-MinWindEfficiency = 1 --for turbines
-MaxWindHeight = 0 --for turbines
-MaxRotationalSpeed = 0 --for turbines
+MinWindEfficiency = 1
+MaxWindHeight = 0
+MaxRotationalSpeed = 0
 
-FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
-ConstructEffect = "effects/device_upgrade.lua"
+FireEffect = path .. "/effects/firerollingthunder.lua"
+ConstructEffect = "effects/device_construct.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/sniper_explode.lua"
-ShellEffect = "effects/shell_eject_sniper_ap.lua" --plays on every shot, not once like FireEffect
+ShellEffect = "effects/shell_eject_sniper_ap.lua"
 ReloadEffect = "effects/sniper_ap_reload.lua"
 ReloadEffectOffset = -.5
-Projectile = "rollingthunderrocket" --shoots the new projectile
-BarrelLength = 100.0 --helps to offset the firing arc from the centre of the weapon sprite
-MinFireClearance = 500 --I dunno what these three do xD
+Projectile = "rollingthunderrocket"
+BarrelLength = 100.0
+MinFireClearance = 500
 FireClearanceOffsetInner = 20
 FireClearanceOffsetOuter = 40
-ReloadTime = 35 --X seconds of reload time
-ReloadTimeIncludesBurst = false --starts reloading while shooting if true
-MinFireSpeed = 2000 --projectile speed when shooting. Min is if you aim in the inside of the firing arc
-MaxFireSpeed = 3000 --maximum is if you aim at the outmost part of the firing arc. Both FiringSpeeds may be equal
-MinFireRadius = 420 --size of the firing arc (start)
-MaxFireRadius = 1069--size of the firing arc (end)
-MinVisibility = 0.3--for the system that weapons placed higher up have a bigger arc
-MaxVisibilityHeight = 700 --at this (visibility floor on maps) height the weapon has its greatest arc
-MinFireAngle = 50 --bottom fire angle
-MaxFireAngle = 100 --top fire angle
-MouseSensitivityFactor = 0.5 --no idea
-KickbackMean = 50 --How much your mouse if moved when shooting
-KickbackStdDev = 0 --deviation from KickbackMean (between 50-7 & 50+7)
-PanDuration = 0 --no idea
-FireStdDev = 0.01 --how inaccurate the weapon is
-FireStdDevAuto = 0--inaccuracy specifically when pressing "e" on the weapon (autofire)
-FireDelay = 0.15 --seconds before the weapon shoots when pressing fire
-RoundPeriod = 1.35 --how long a single shot lasts (time after shots, adds to reload time)
-Recoil = 400000 --make this number really really high and you will see what it does xD
-EnergyFireCost = 4000 --energy cost each time you shoot
-MetalFireCost = 50 --same but with metal instead
-AutofireCloseDoorTicks = 1.5*25 --How many ticks until the door closes after you fire (25 is one second)
-RoundsEachBurst = 10 --how many shots in a burst
-RoundPeriod = 0.2 --time between shots in a burst in seconds
+ReloadTime = 35
+ReloadTimeIncludesBurst = false
+MinFireSpeed = 2000
+MaxFireSpeed = 3000
+MinFireRadius = 400
+MaxFireRadius = 1099
+MinVisibility = 0.3
+MaxVisibilityHeight = 700
+MinFireAngle = 50
+MaxFireAngle = 100
+MouseSensitivityFactor = 0.5
+KickbackMean = 50
+KickbackStdDev = 0
+PanDuration = 0
+FireStdDev = 0.01
+FireStdDevAuto = 0
+FireDelay = 0.15
+RoundPeriod = 1.35
+Recoil = 400000
+EnergyFireCost = 4000
+MetalFireCost = 50
+AutofireCloseDoorTicks = 1.5*25
+RoundsEachBurst = 10
+RoundPeriod = 0.2
 DefaultFireAngle = (MinFireAngle + MaxFireAngle)/2
-RetriggerFireEffect = true --plays the fire sound effect again when burst shots
+RetriggerFireEffect = true
 IgnitePlatformOnDestruct = true
 StructureSplashDamage = 200
 StructureSplashDamageMaxRadius = 150
@@ -64,26 +64,23 @@ StructureSplashDamageMaxRadius = 150
 ShowFireAngle = true
 ShowFireSpeed = true
 
-CanOverheat = false --overheats like a machine gun
---HeatPeriod = 5.5 --maximum heat capacity
---CoolPeriod = 1234567890 --seconds until the weapon goes from 100% heat to 0% heat (passively)
---CoolPeriodOverheated = 1234567890 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
+CanOverheat = false
 
-dofile("effects/device_smoke.lua") --effect that shows smoke when the weapon is damaged
-SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
+dofile("effects/device_smoke.lua")
+SmokeEmitter = StandardDeviceSmokeEmitter
 
-Sprites = --defines new sprites that can be used by any weapon
+Sprites =
 {
     {
-        Name = "rollingthunderbase", --the main part
+        Name = "rollingthunderbase",
         States =
         {
-            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
+            Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/base.png" }, mipmap = true, }, },
             Idle = Normal,
         },
     },
     {
-        Name = "rollingthunderhead", --the gun barrel
+        Name = "rollingthunderhead",
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/rollingthunder/head.png" }, mipmap = true, }, },
@@ -94,32 +91,32 @@ Sprites = --defines new sprites that can be used by any weapon
 
 Root =
 {
-    Name = "Rolling thunder", --name doesn't matter
-    Angle = 0, --how many degrees it's turned
-    Pivot = { 0.25, -0.55 }, --how much offset the sprite has from the centre of the picture
-    PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
-    Sprite = "rollingthunderbase", --sprite name DOES matter
-    UserData = 0, --when the sprite shows up during building of the weapon. 0 = instantly, 100 = completely finished
+    Name = "Rolling thunder",
+    Angle = 0,
+    Pivot = { 0.25, -0.55 },
+    PivotOffset = { 0, 0 },
+    Sprite = "rollingthunderbase",
+    UserData = 0,
 
-    ChildrenInFront = --connected sprites in front
+    ChildrenInFront =
     {
         {
             Name = "Head",
             Angle = 0,
             Pivot = { -0.25, -0.1 },
-            PivotOffset = { 0.25, 0.05 }, --how much offset the sprite has from the centre of the previous picture it's connected to
+            PivotOffset = { 0.25, 0.05 },
             Sprite = "rollingthunderhead",
-            UserData = 50, --shows up halfway through building
+            UserData = 50,
             ChildrenInFront =
             {
                 {
-                    Name = "Hardpoint0", --where the projectile is ejected from
+                    Name = "Hardpoint0",
                     Angle = 90,
                     Pivot = { -0.17, -0.15 },
                     PivotOffset = { 0, 0 },
                 },
                 {
-                    Name = "LaserSight", --only works if you use a laser sight (like eagle eye does with most guns)
+                    Name = "LaserSight",
                     Angle = 90,
                     Pivot = { -0.04, -0.2 },
                     PivotOffset = { 0, 0 },

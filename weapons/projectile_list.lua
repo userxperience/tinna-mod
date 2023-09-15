@@ -1,22 +1,18 @@
 dofile("scripts/type.lua")
 
-stop = { Effect = nil, Projectile = { Count = 0, Type = "mortar", Speed = 0, StdDev = 0 }, Splash = false, Terminate = true, }
---"stop" is an example for an age effect, it currently only removes the host projectile :P
-
-
 table.insert(Projectiles,
 		{
 			SaveName = "rollingthunderrocket",
 
-			ProjectileType = "mortar", -- necessary to make a trail
+			ProjectileType = "mortar",
 			ProjectileSprite = path .."/effects/media/rollingthunderprojectile",
 			ProjectileSpriteMipMap = true,
-			DrawBlurredProjectile = false, --higher speeds will stretch the sprite
+			DrawBlurredProjectile = false,
 			AntiAirHitpoints = 10,
 			ProjectileMass = 16,
-			ProjectileDrag = -1, --drag, negative value will make projectile accelerate
+			ProjectileDrag = -1,
 			ProjectileIncendiary = true,
-			AlwaysIncendiary = true, --use when incendiary projectiles don't work right just in case xD
+			AlwaysIncendiary = true,
 			DeflectedByShields = false,
 			ExplodeOnTouch = true,
 			CanBeShotDown = true,
@@ -29,15 +25,14 @@ table.insert(Projectiles,
 			IgnitesBackgroundMaterialsPassing = true,
 
 			ProjectileThickness = 10,
-			ProjectileShootDownRadius = 50, --big radius
+			ProjectileShootDownRadius = 50,
 			Impact = 200000,
 			SpeedIndicatorFactor = 1,
-			ProjectileDamage = 200, --bracing has 150 HP, armor has 400 HP
-			WeaponDamageBonus = 100, --300 damage to weapons. That's almost 3 sniper shots
-			DeflectedByTerrain = false, --set to true if you want it to bounce around the map :P
+			ProjectileDamage = 200,
+			WeaponDamageBonus = 100,
 			Gravity = 500,
 			MaxAge = 60,
-			TrailEffect = path .. "/effects/rollingthunderprojectiletrail.lua", --custom trail effect
+			TrailEffect = path .. "/effects/rollingthunderprojectiletrail.lua",
 
 			Projectile =
 			{
@@ -168,7 +163,7 @@ local crambullet = DeepCopy(FindProjectile("machinegun"))
 if crambullet then
 	crambullet.SaveName = "crambullet"
 	crambullet.Gravity = 1000
-	crambullet.ProjectileDrag = 10 --drag, negative value will make projectile accelerate
+	crambullet.ProjectileDrag = 10
 	crambullet.ProjectileMass = 16
 	crambullet.DrawBlurredProjectile = true
 	crambullet.MaxAge = 2.5
@@ -203,7 +198,7 @@ if lobbershell then
 	lobbershell.ProjectileDamage = 0.0
 	lobbershell.ProjectileSplashDamage = 0.0
 	lobbershell.ProjectileSplashDamageMaxRadius = 165.0
-	lobbershell.ProjectileSplashMaxForce = 10000 -- moderate shockwave
+	lobbershell.ProjectileSplashMaxForce = 10000
 	lobbershell.CanBeShotDown = true
 	lobbershell.SpeedIndicatorFactor = 0.25
 	lobbershell.DrawBlurredProjectile = false
@@ -260,6 +255,12 @@ if lobberbomblet then
 	lobberbomblet.Impact = 0
 	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
 
+	lobberbomblet.DamageMultiplier =
+	{	{	Direct = 1,	Fire = 1,
+			  SaveName = "reactor",	Splash = 1,	},
+		 {	SaveName = "weapon", Direct = 2 },
+		 {	SaveName = "portal",	Direct = 2,},	}
+
 	lobberbomblet.Effects = {
 		Impact = {
 			["default"] = "effects/impact_medium.lua",
@@ -267,91 +268,49 @@ if lobberbomblet then
 	}
     end
     table.insert(Projectiles, lobberbomblet)
-
-local gatewaymissile = DeepCopy(FindProjectile("missile2"))
-if gatewaymissile then
-	gatewaymissile.SaveName = "gatewaymissile"
-	Missile =
-	{
-		ThrustAngleExtent = 90,
-		ErraticAngleExtentStdDev = 0.01,
-		ErraticAngleExtentMax = 0.01,
-		MaxSteerPerSecond = 500,
-		MaxSteerPerSecondErratic = 0.001,
-		ErraticAnglePeriodMean = 0,
-		ErraticAnglePeriodStdDev = 0.001,
-		RocketThrust = 10000000,
-		RocketThrustChange = 6000,
-		ErraticThrust = 1.4,
-		CruiseTargetDistance = 300,
-		CruiseTargetDuration = .5,
-		TargetRearOffsetDistance = 100000,
-		MinTargetUpdateDistance = 10,
-}
-	gatewaymissile.Effects =
-	{
-		Age =
-		{
-			['t400'] = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,}
-		}
-	}
-end
-table.insert(Projectiles, gatewaymissile)
-
-
-
-local gatewaylaser = DeepCopy(FindProjectile("laser"))
-if gatewaylaser then
-	gatewaylaser.SaveName = "gatewaylaser"
-	gatewaylaser.ProjectileSprite = path .. "/weapons/media/megabeam"
-	gatewaylaser.ProjectileSpriteMipMap = true
-	gatewaylaser.DrawBlurredProjectile = false
-	gatewaylaser.ProjectileMass = 1.0
-	gatewaylaser.ProjectileDrag = 0.0
-	gatewaylaser.ProjectileIncendiary = true
-	gatewaylaser.IgnitesBackgroundMaterials = true
-	gatewaylaser.IgnitesBackgroundMaterialsPassing = true
-	gatewaylaser.IgnitesBackgroundMaterialsPassingSource = false
-	gatewaylaser.DeflectedByShields = true
-	gatewaylaser.ExplodeOnTouch = false
-	gatewaylaser.Impact = 100000
-	gatewaylaser.BeamScrollRate = -10
-	gatewaylaser.BeamOcclusionDistance = 200
-	gatewaylaser.ProjectileDamage = 10.00
-	gatewaylaser.SpeedIndicatorFactor = 0.05
-	gatewaylaser.ProjectileThickness = 30
-
-end
-table.insert(Projectiles, gatewaylaser)
-
-    --local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
-    --if lobberbomblet then
-    --	lobberbomblet.SaveName = "lobberbomblet"
-    --	lobberbomblet.ProjectileMass = 500
-    --	lobberbomblet.ProjectileDrag = 300
-    --	lobberbomblet.ProjectileDamage = 5
-    --	lobberbomblet.ProjectileSplashDamage = 0
-    --	lobberbomblet.Impact = 0
-    --	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
-    --
-    --	lobberbomblet.Effects = {
-    --		Impact = {
-    --			["device"] = lobbershellbaseimpact,
-    --			["antiair"] = lobbershellbaseimpact,
-    --			["foundations"] = lobbershellbaseimpact,
-    --			["rocks01"] = lobbershellbaseimpact,
-    --			["shield"] = lobbershellbaseimpact,
-    --			["default"] = lobbershellbaseimpact,
-    --		}
-    --	}
-    --end
-    --table.insert(Projectiles, lobberbomblet)
-
-
-
-    --local template = DeepCopy(FindProjectile("machinegun"))
-    --if template then
-    --	template.SaveName = "template"
-    --
-    --end
-    --table.insert(Projectiles, template)
+--
+--local gatewaymissile = DeepCopy(FindProjectile("missile2"))
+--if gatewaymissile then
+--	gatewaymissile.SaveName = "gatewaymissile"
+--	Missile =
+--	{
+--		ThrustAngleExtent = 90,
+--		ErraticAngleExtentStdDev = 0.01,
+--		ErraticAngleExtentMax = 0.01,
+--		MaxSteerPerSecond = 500,
+--		MaxSteerPerSecondErratic = 0.001,
+--		ErraticAnglePeriodMean = 0,
+--		ErraticAnglePeriodStdDev = 0.001,
+--		RocketThrust = 10000000,
+--		RocketThrustChange = 6000,
+--		ErraticThrust = 1.4,
+--		CruiseTargetDistance = 300,
+--		CruiseTargetDuration = .5,
+--		TargetRearOffsetDistance = 100000,
+--		MinTargetUpdateDistance = 10,
+--}
+--	gatewaymissile.Effects =
+--	{
+--		Age =
+--		{
+--			['t400'] = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,}
+--		}
+--	}
+--end
+--table.insert(Projectiles, gatewaymissile)
+--
+--
+--
+--local gatewaylasermain = DeepCopy(FindProjectile("laser"))
+--if gatewaylasermain then
+--	gatewaylasermain.SaveName = "gatewaylasermain"
+--
+--end
+--table.insert(Projectiles, gatewaylasermain)
+--
+--
+--local gatewaylaser2 = DeepCopy(FindProjectile("firebeam"))
+--if gatewaylaser2 then
+--	gatewaylaser2.SaveName = "gatewaylaser2"
+--end
+--table.insert(Projectiles, gatewaylaser2)

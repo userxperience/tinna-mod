@@ -5,116 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ecda85c-ce07-45e9-9cce-abc3d187e534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/textures/HUD/HUD-gateway-A.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/textures/HUD/HUD-gateway-D.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/textures/HUD/HUD-gateway-R.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/textures/HUD/HUD-gateway-S.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/gateway.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/gateway/base.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/gateway/head.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/gateway/head.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/rollingthunder/base.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/rollingthunder/head.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weapons/rollingthunder/head.tga" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/barrel-hvy-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/barrel-hvy-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-05.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-ammo-06.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-01-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-02-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-03-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-hvy-04-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-med-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-med-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-med-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-sml-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-sml-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-sml-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-sml-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-02-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/base-tur-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-01+barrel.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-04+barrel.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-hvy-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-med-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-med-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-med-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-tur-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-tur-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-tur-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/head-tur-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-02.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-03.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-04.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-05.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/projectile-06.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-01-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-02-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-03-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-BPO.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-CF.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-DA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-EE.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-IBA.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite Pack/weapon-sml-04-UN.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai/ai.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ai/ai.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devices/device_list.lua" beforeDir="false" afterPath="$PROJECT_DIR$/devices/device_list.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemversion.lua" beforeDir="false" afterPath="$PROJECT_DIR$/itemversion.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials/building_materials.lua" beforeDir="false" afterPath="$PROJECT_DIR$/materials/building_materials.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/effects/firegatewayportal.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/effects/media/blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/animationscript1.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/animationscript2.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/beam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/gatewayportal.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/gatewayportal1.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/gatewayportal2.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weapons/gatewayportal/head.tga" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effects/firerollingthunder.lua" beforeDir="false" afterPath="$PROJECT_DIR$/effects/firerollingthunder.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effects/lobberbomblettrail.lua" beforeDir="false" afterPath="$PROJECT_DIR$/effects/lobberbomblettrail.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effects/rollingthundertrail.lua" beforeDir="false" afterPath="$PROJECT_DIR$/effects/rollingthundertrail.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mod.lua" beforeDir="false" afterPath="$PROJECT_DIR$/mod.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods/dlc1_weapons/weapons/magnabeam.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods/dlc1_weapons/weapons/smokebomb.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods/language-English/weapons/strings.lua" beforeDir="false" afterPath="$PROJECT_DIR$/mods/language-English/weapons/strings.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods/weapon_pack/weapons/20mmcannon.lua" beforeDir="false" afterPath="$PROJECT_DIR$/mods/weapon_pack/weapons/20mmcannon.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preview.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/preview.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.lua" beforeDir="false" afterPath="$PROJECT_DIR$/script.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weapons/cram.lua" beforeDir="false" afterPath="$PROJECT_DIR$/weapons/cram.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weapons/gatewayportal.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weapons/launchsite.lua" beforeDir="false" afterPath="$PROJECT_DIR$/weapons/launchsite.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weapons/lobber.lua" beforeDir="false" afterPath="$PROJECT_DIR$/weapons/lobber.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weapons/projectile_list.lua" beforeDir="false" afterPath="$PROJECT_DIR$/weapons/projectile_list.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weapons/rollingthunder.lua" beforeDir="false" afterPath="$PROJECT_DIR$/weapons/rollingthunder.lua" afterDir="false" />
@@ -139,28 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/SteamLibrary/steamapps/common/Forts/data/mods/tinna mod/weapons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SteamLibrary/steamapps/common/Forts/data/mods/tinna mod/weapons/gatewayportal&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons\gatewayportal" />
+      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons\sbdrunklaser" />
+      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\effects\media" />
       <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons" />
       <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\devices" />
-      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\ui\textures\HUD" />
-      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons\gateway" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons\gatewayportal" />
       <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons" />
       <recent name="D:\SteamLibrary\steamapps\common\Forts\data\mods\tinna mod\weapons\rollingthunder" />
     </key>
@@ -183,7 +102,15 @@
       <workItem from="1694355638774" duration="679000" />
       <workItem from="1694356449453" duration="5245000" />
       <workItem from="1694361821514" duration="2640000" />
-      <workItem from="1694366174349" duration="2487000" />
+      <workItem from="1694366174349" duration="3119000" />
+      <workItem from="1694528042191" duration="5629000" />
+      <workItem from="1694601118997" duration="7385000" />
+      <workItem from="1694627321792" duration="16000" />
+      <workItem from="1694631762675" duration="1700000" />
+      <workItem from="1694765212548" duration="1383000" />
+      <workItem from="1694766697534" duration="5000" />
+      <workItem from="1694782449283" duration="1923000" />
+      <workItem from="1694785755807" duration="2291000" />
     </task>
     <servers />
   </component>

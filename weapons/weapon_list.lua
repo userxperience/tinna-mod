@@ -1,6 +1,5 @@
 dofile("ui/uihelper.lua")
 dofile("scripts/type.lua")
---sprite Table for HUD
 
 table.insert(Sprites, ButtonSprite("hud-rollingthunder-icon", "HUD/HUD-rollingthunder",
 									nil, ButtonSpriteBottom, nil, nil, path))
@@ -20,7 +19,6 @@ table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 			FileName = path .. "/weapons/rollingthunder.lua",
 			Icon = "hud-rollingthunder-icon", --bottom HUD (weapon list)
 			GroupButton = "hud-group-rocket", --top HUD (weapon groups)
-			--Detail = "hud-detail-rollingthunder", --left HUD (cost preview)
 			Prerequisite = "munitions",
 			BuildTimeComplete = 40.0,
 			ScrapPeriod = 5,
@@ -32,8 +30,8 @@ table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 			MetalReclaimMax = 0.4,
 			EnergyReclaimMin = 0.15,
 			EnergyReclaimMax = 0.45,
-			MaxSpotterAssistance = 0.4, -- great benefit from spotters
-			MaxUpAngle = StandardMaxUpAngle, --add *2.5, for steeper angles
+			MaxSpotterAssistance = 0.4,
+			MaxUpAngle = StandardMaxUpAngle,
 			MaxWeaponGroupSize = 3,
 			BuildOnGroundOnly = false,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
@@ -47,11 +45,10 @@ table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 		{
 			Enabled = true,
 			SaveName = "launchsite",
-			Icon = "hud-launchsite-icon", --bottom HUD (weapon list)
+			Icon = "hud-launchsite-icon",
 			FileName = path .. "/weapons/launchsite.lua",
 
-			GroupButton = "hud-group-rocket", --top HUD (weapon groups)
-			--Detail = "hud-detail-rollingthunder", --left HUD (cost preview)
+			GroupButton = "hud-group-rocket",
 			Prerequisite = "munitions",
 			BuildTimeComplete = 40.0,
 			ScrapPeriod = 5,
@@ -63,14 +60,14 @@ table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 			MetalReclaimMax = 0.4,
 			EnergyReclaimMin = 0.15,
 			EnergyReclaimMax = 0.45,
-			MaxSpotterAssistance = 0.4, -- great benefit from spotters
-			MaxUpAngle = StandardMaxUpAngle, --add *2.5, for steeper angles
+			MaxSpotterAssistance = 0.4,
+			MaxUpAngle = StandardMaxUpAngle,
 			MaxWeaponGroupSize = 3,
 			BuildOnGroundOnly = false,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
 
 			CompatibleGroupTypes =
-			{ --can be grouped with cannons and 20mm cannons
+			{
 				--"cannon",
 				--"cannon20mm",
 			},
@@ -81,9 +78,9 @@ table.insert(Weapons, IndexOfWeapon("firebeam") - 1,
 			Enabled = true,
 			SaveName = "cram",
 			FileName = path .. "/weapons/cram.lua",
-			Icon = "hud-cram-icon", --bottom HUD (weapon list)
-			GroupButton = "hud-group-flak", --top HUD (weapon groups)
-			Detail = "hud-detail-flak", --left HUD (cost preview)
+			Icon = "hud-cram-icon",
+			GroupButton = "hud-group-flak",
+			Detail = "hud-detail-flak",
 			Prerequisite = "factory",
 			BuildTimeComplete = 40.0,
 			ScrapPeriod = 5,
@@ -95,8 +92,8 @@ table.insert(Weapons, IndexOfWeapon("firebeam") - 1,
 			MetalReclaimMax = 0.4,
 			EnergyReclaimMin = 0.15,
 			EnergyReclaimMax = 0.45,
-			MaxSpotterAssistance = 0.4, -- great benefit from spotters
-			MaxUpAngle = StandardMaxUpAngle, --add *2.5, for steeper angles
+			MaxSpotterAssistance = 0.4,
+			MaxUpAngle = StandardMaxUpAngle,
 			BuildOnGroundOnly = false,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
 			MaxWeaponGroupSize = 1,
@@ -131,9 +128,7 @@ table.insert(Weapons, IndexOfWeapon("mortar") + 1,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
 
 			CompatibleGroupTypes =
-			{ --can be grouped with cannons and 20mm cannons
-				--"cannon",
-				--"cannon20mm",
+			{
 			},
 		})
 
@@ -174,23 +169,55 @@ table.insert(Weapons, IndexOfWeapon("sniper") + 1,
 		})
 
 
-local gatewayportal = FindWeapon("laser")
-if gatewayportal then
-	table.insert(Weapons,
-			InheritType(FindWeapon("laser"),nil,
-					{
-						SaveName = "gatewayportal",
-						FileName = path .. "/weapons/gatewayportal.lua",
-						MetalCost = 0,
-						EnergyCost = 0,
-						BuildTimeComplete = 0.0,
-						Prerequisite = nil,
-						Enabled = false,
-						dlc2_BuildAnywhere = true,
-						RequiresSpotterToFire = false,
-						AnimationScript = nil,
-						BuildOnGroundOnly = true,
-					}
-			)
-	)
-end
+--table.insert(Weapons, IndexOfWeapon("sniper") - 1,
+--		{
+--			Enabled = false,
+--			SaveName = "gatewayportal",
+--			FileName = path .. "/weapons/gatewayportal/gatewayportal.lua",
+--			--Icon = "hud-sbdrunklaser-icon",
+--			GroupButton = "hud-group-laser",
+--			--Detail = "hud-detail-sbdrunklaser",
+--			Prerequisite = "upgrade",
+--			BuildTimeComplete = 0.0001,
+--			ScrapPeriod = 0.0001,
+--			MetalCost = 500,
+--			EnergyCost = 5000,
+--			MetalRepairCost = 15,
+--			EnergyRepairCost = 250,
+--			MetalReclaimMin = 0.25,
+--			MetalReclaimMax = 0.5,
+--			EnergyReclaimMin = 0.1,
+--			EnergyReclaimMax = 0.5,
+--			MaxSpotterAssistance = 0,
+--			MaxUpAngle = StandardMaxUpAngle,
+--			dlc2_BuildAnywhere = true,
+--			BuildOnGroundOnly = true,
+--			SelectEffect = "ui/hud/weapons/ui_weapons",
+--		})
+--
+--
+--local gatewayportal1 = FindWeapon("gatewayportal")
+--if gatewayportal1 then
+--	table.insert(Weapons,
+--			InheritType(FindWeapon("gatewayportal"),nil,
+--					{
+--						SaveName = "gatewayportal1",
+--						FileName = path .. "/weapons/gatewayportal/gatewayportal1.lua",
+--						AnimationScript = path .. "/weapons/gatewayportal/animationscript1.lua",
+--					}
+--			)
+--	)
+--end
+--
+--local gatewayportal2 = FindWeapon("gatewayportal")
+--if gatewayportal2 then
+--	table.insert(Weapons,
+--			InheritType(FindWeapon("gatewayportal"),nil,
+--					{
+--						SaveName = "gatewayportal2",
+--						FileName = path .. "/weapons/gatewayportal/gatewayportal2.lua",
+--						AnimationScript = path .. "/weapons/gatewayportal/animationscript2.lua",
+--					}
+--			)
+--	)
+--end

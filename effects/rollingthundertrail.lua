@@ -45,18 +45,4 @@ Effects =
 			},
 		},
 	},
-	--{
-	--	Type = "trail",
-	--	Texture = path .. "/effects/media/trail.tga",
-	--	LocalPosition = { x = 0, y = 0, z = 9.0 },
-	--	Colour = { 64, 64, 64, 255 },
-	--	Additive = false,
-	--	Width = 1.5,
-	--	Length = 40.75,
-	--	Keyframes = 100,
-	--	KeyframePeriod = 0.05,
-	--	RepeatRate = 0.001,
-	--	ScrollRate = 0,
-	--	FattenRate = 0,
-	--}
 }

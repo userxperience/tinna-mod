@@ -45,16 +45,4 @@ Effects =
             },
         },
     },
-    --{
-    --    Type = "sound",
-    --    TimeToTrigger = 0.1,
-    --    TimeToTriggerStdDev = 0.03,
-    --    FadeInPeriod = 0.5,
-    --    LocalPosition = { x = 0, y = 0, z = 0 },
-    --    Sound = path .. "/effects/sounds/kirov_hum.wav",
-    --    Volume = 1,
-    --    Priority = 192,
-    --    Repeat = true, --true means the sound will loop
-    --    RandomiseStart = true,
-    --},
 }
