@@ -1,0 +1,2 @@
+--Projectile = "magneticfield"
+--the projectile that the beam spawns is called "magneticfield"

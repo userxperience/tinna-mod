@@ -24,7 +24,7 @@ StructureSplashDamageMaxRadius = 150
 
 FireEffect = path .. "/effects/firecram.lua"
 ShellEffect = "effects/shell_eject_small.lua"
-ConstructEffect = "effects/device_upgrade.lua"
+ConstructEffect = "effects/device_construct.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/machinegun_explode.lua"
 ReloadEffect = "effects/minigun_reload.lua"
@@ -34,9 +34,9 @@ BarrelLength = 90.0
 MinFireClearance = 500
 FireClearanceOffsetInner = 20
 FireClearanceOffsetOuter = 40
-ReloadTime = 2
-MinFireSpeed = 12000
-MaxFireSpeed = 12000
+ReloadTime = 1
+MinFireSpeed = 9000
+MaxFireSpeed = 9000
 MinFireRadius = 300.0
 MaxFireRadius = 600.0
 MinVisibility = 0.9
@@ -58,17 +58,17 @@ RoundPeriod = 0.04
 DoorCloseDelay = 0.75
 
 CanOverheat = true --overheats like a machine gun
-HeatPeriod = 4.5 --maximum heat capacity
+HeatPeriod = 3 --maximum heat capacity
 CoolPeriod = 45 --seconds until the weapon goes from 100% heat to 0% heat (passively)
-CoolPeriodOverheated = 35 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
+CoolPeriodOverheated = 45 --seconds until the weapon goes from 100% heat to 0% heat (on overheat)
 
-dofile("effects/device_smoke.lua")
-SmokeEmitter = StandardDeviceSmokeEmitter
+dofile("effects/device_smoke.lua") --effect that shows smoke when the weapon is damaged
+SmokeEmitter = StandardDeviceSmokeEmitter --usual smoke on a hurt weapon
 
-Sprites =
+Sprites = --defines new sprites that can be used by any weapon
 {
     {
-        Name = "cram-base",
+        Name = "cram-base", --the main part
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/cram/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
@@ -76,7 +76,7 @@ Sprites =
         },
     },
     {
-        Name = "cram-head",
+        Name = "cram-head", --the gun barrel
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/cram/head.png" }, mipmap = true, }, },
@@ -87,32 +87,32 @@ Sprites =
 
 Root =
 {
-    Name = "cram",
-    Angle = 0,
-    Pivot = { 0, -0.5 },
-    PivotOffset = { 0, 0 },
-    Sprite = "cram-base",
-    UserData = 0,
+    Name = "cram", --name doesn't matter
+    Angle = 0, --how many degrees it's turned
+    Pivot = { 0, -0.5 }, --how much offset the sprite has from the centre of the picture
+    PivotOffset = { 0, 0 }, --Forts Pivot calculator is in the forts modding discord pinned messages
+    Sprite = "cram-base", --sprite name DOES matter
+    UserData = 0, --when the sprite shows up during building of the weapon. 0 = instantly, 100 = completely finished
 
-    ChildrenBehind =
+    ChildrenBehind = --connected sprites in front
     {
         {
             Name = "Head",
             Angle = 0,
             Pivot = { -0.1, -0.4 },
-            PivotOffset = { -0.0, 0.1 },
+            PivotOffset = { -0.0, 0.1 }, --how much offset the sprite has from the centre of the previous picture it's connected to
             Sprite = "cram-head",
-            UserData = 50,
+            UserData = 50, --shows up halfway through building
             ChildrenInFront =
             {
                 {
-                    Name = "Hardpoint0",
+                    Name = "Hardpoint0", --where the projectile is ejected from
                     Angle = 90,
                     Pivot = { 0, 0 },
                     PivotOffset = { 0, 0 },
                 },
                 {
-                    Name = "LaserSight",
+                    Name = "LaserSight", --only works if you use a laser sight (like eagle eye does with most guns)
                     Angle = 90,
                     Pivot = { -0.04, -0.2 },
                     PivotOffset = { 0, 0 },

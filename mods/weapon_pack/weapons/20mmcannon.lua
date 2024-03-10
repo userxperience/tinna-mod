@@ -1,4 +1,3 @@
---unedited
 Scale = 1
 SelectionWidth = 90
 SelectionHeight = 55

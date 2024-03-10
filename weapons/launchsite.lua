@@ -1,16 +1,18 @@
-Scale = 1
-SelectionWidth = 210
+Scale = 1 --general size of the hitbox, ususally kept at 1
+SelectionWidth = 210 --width of the hitbox. ~25 is a grid square
 SelectionHeight = 125
-SelectionOffset = { -105, -125 }
+SelectionOffset = { -105, -125 } --make first number negative half of SelectionWidth, and second number negative selectionheight except if you want the weapon to overlap with ground.
 RecessionBox =
+
 {
     Size = { 200, 25 },
     Offset = { -300, -50 },
-}
-ConstructEffect = "effects/device_construct.lua"
+} --keep this from the template. Experiment if you want to know details.
+
+ConstructEffect = "effects/device_upgrade.lua"
 CompleteEffect = "effects/device_complete.lua"
 DestroyEffect = "effects/cannon_explode.lua"
-FireEffect = path .. "/effects/firerollingthunder.lua"
+FireEffect = path .. "/effects/firerollingthunder.lua" --effect that has sprites and sounds when shooting
 
 WeaponMass = 200
 HitPoints = 350
@@ -37,7 +39,7 @@ IgnitePlatformOnDestruct = true
 local kirovmultiplier = 0.035 -- 0.07 to reach a medium ranged map's fort in 1 minute 0.035 for 2 minutes
 
 MinFireClearance = 3000
-BarrelLength = 50.0
+BarrelLength = 50.0 --helps to offset the firing arc from the centre of the weapon sprite
 FireClearanceOffsetInner = 50
 FireClearanceOffsetOuter = 800
 RoundsEachBurst = 1
@@ -72,10 +74,10 @@ MinAgeTrigger = 1 / kirovmultiplier * 2
 MaxAgeTrigger = 6 / kirovmultiplier * 2
 
 
-Sprites =
+Sprites = --defines new sprites that can be used by any weapon
 {
     {
-        Name = "launchsite-base",
+        Name = "launchsite-base", --the main part
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/launchsite/base.png" }, mipmap = true, }, }, --path .. allows you to search within the files of the mod
@@ -83,7 +85,7 @@ Sprites =
         },
     },
     {
-        Name = "launchsite-head",
+        Name = "launchsite-head", --the gun barrel
         States =
         {
             Normal = { Frames = { { texture = path .. "/weapons/launchsite/head-kirov.png" }, mipmap = true, }, },
@@ -125,7 +127,7 @@ Root =
                     PivotOffset = { 0, 0 },
                 },
                 {
-                    Name = "Chamber",
+                    Name = "Chamber", --Something else important...
                     Angle = 0,
                     Pivot = { -0.17, -0.15 },
                     PivotOffset = { 0, 0 },
