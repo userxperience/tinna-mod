@@ -7,10 +7,10 @@ Effects =
     {
         Type = "sparks",
         TimeToTrigger = 0.0,
-        SparkCount = 20,
+        SparkCount = 3400,
         BurstPeriod = 0.03,
         SparksPerBurst = 1,
-        LocalPosition = { x = -20, y = 160, z = 10 },	-- how to place the origin relative to effect position and direction (0, 0)
+        LocalPosition = { x = 0, y = 0, z = 10 },	-- how to place the origin relative to effect position and direction (0, 0)
         Sprite = "effects/media/Steam.tga",
 
         Gravity = 0,						-- gravity applied to particle (981 is earth equivalent)
@@ -27,8 +27,8 @@ Effects =
                 Angle = 0,					-- angle of keyframe in degrees (e.g. -180, 45, 0)
                 RadialOffsetMin = 0,		-- minimum distance from effect origin
                 RadialOffsetMax = 20,		-- maximum distance from effect origin
-                ScaleMean = 0.2,			-- mean scale (normal distribution)
-                ScaleStdDev = 0.1,			-- standard deviation of scale (0 will make them all the same size)
+                ScaleMean = 0.35,			-- mean scale (normal distribution)
+                ScaleStdDev = 0.15,			-- standard deviation of scale (0 will make them all the same size)
                 SpeedStretch = 0,			-- factor of speed by which to elongate the spark in the direction of travel (avoid using with rotation)
                 SpeedMean = 50,				-- mean speed of sparks at emission (normal distribution)
                 SpeedStdDev = 5,			-- standard deviation of spark speed at emission
@@ -36,23 +36,23 @@ Effects =
                 RotationMean = 0,			-- mean initial rotation in degrees (e.g. -180, 45, 0) (normal distribution)
                 RotationStdDev = 45,		-- standard deviation of initial rotation in degrees (zero will make them start at the same angle)
                 RotationalSpeedMean = 0,	-- mean rotational speed in degrees per second (e.g. -180, 45, 0) (normal distribution)
-                RotationalSpeedStdDev = 15,	-- standard deviation of rotational speed in degrees per second (zero will make them rotate at the same rate)
-                AgeMean = 0.75,				-- mean age in seconds (normal distribution)
-                AgeStdDev = .05,			-- standard deviation of age in seconds (zero makes them last the same length of time)
+                RotationalSpeedStdDev = 5,	-- standard deviation of rotational speed in degrees per second (zero will make them rotate at the same rate)
+                AgeMean = 5,				-- mean age in seconds (normal distribution)
+                AgeStdDev = .5,			-- standard deviation of age in seconds (zero makes them last the same length of time)
                 AlphaKeys = { 0.1, 0.5 },	-- fractions of life span between which the spark reaches full alpha (fade in -> full alpha -> fade out)
                 ScaleKeys = { 0.1, 0.2 },		-- fractions of life span between which the spark reaches full scale (balloon in -> full scale -> shrink out)
-                colour = { 255, 255, 255, 255 }, -- Colour used to modulate the sprite
+                colour = { 40, 40, 40, 255 }, -- Colour used to modulate the sprite
             },
         },
     },
     {
         Type = "sound",
-        TimeToTrigger = 0.1,
+        TimeToTrigger = 0.01,
         TimeToTriggerStdDev = 0.03,
-        FadeInPeriod = 0.5,
+        FadeInPeriod = 0.25,
         LocalPosition = { x = 0, y = 0, z = 0 },
-        Sound = path .. "/effects/sounds/kirov_hum.wav",
-        Volume = 0.5,
+        Sound = path .. "/effects/sounds/kirov_crashing.wav",
+        Volume = 1,
         Priority = 192,
         Repeat = true, --true means the sound will loop
         RandomiseStart = true,

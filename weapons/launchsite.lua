@@ -36,7 +36,7 @@ IncendiaryRadius = 200
 IncendiaryRadiusHeated = 250
 IgnitePlatformOnDestruct = true
 
-local kirovmultiplier = 0.035 -- 0.07 to reach a medium ranged map's fort in 1 minute 0.035 for 2 minutes
+local kirovmultiplier = 0.07 -- 0.07 to reach a medium ranged map's fort in 1 minute 0.035 for 2 minutes
 
 MinFireClearance = 3000
 BarrelLength = 50.0 --helps to offset the firing arc from the centre of the weapon sprite
@@ -44,7 +44,7 @@ FireClearanceOffsetInner = 50
 FireClearanceOffsetOuter = 800
 RoundsEachBurst = 1
 RoundPeriod = 0.04
-ReloadTime = 0.7
+ReloadTime = 1.4
 MinFireSpeed = 1000 * kirovmultiplier
 MaxFireSpeed = 3000 * kirovmultiplier
 MaxFireClamp = 0.1 / kirovmultiplier

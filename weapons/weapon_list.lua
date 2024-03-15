@@ -10,8 +10,6 @@ table.insert(Sprites, ButtonSprite("hud-cram-icon", "HUD/HUD-cram",
 		nil, ButtonSpriteBottom, nil, nil, path))
 table.insert(Sprites, ButtonSprite("hud-lobber-icon", "HUD/HUD-lobber",
 		nil, ButtonSpriteBottom, nil, nil, path))
-table.insert(Sprites, ButtonSprite("hud-gateway-icon", "HUD/HUD-gateway",
-		nil, ButtonSpriteBottom, nil, nil, path))
 
 table.insert(Weapons, IndexOfWeapon("howitzer") + 1,
 		{
@@ -114,7 +112,7 @@ table.insert(Weapons, IndexOfWeapon("mortar") + 1,
 			Icon = "hud-lobber-icon",
 			GroupButton = "hud-group-rocket",
 			Prerequisite = "workshop",
-			BuildTimeComplete = 25.0,
+			BuildTimeComplete = 50.0,
 			ScrapPeriod = 5,
 			MetalCost = 500,
 			EnergyCost = 2000,
@@ -131,66 +129,6 @@ table.insert(Weapons, IndexOfWeapon("mortar") + 1,
 			SelectEffect = "ui/hud/weapons/ui_weapons",
 
 			CompatibleGroupTypes =
-			{ --can be grouped with cannons and 20mm cannons
-				--"cannon",
-				--"cannon20mm",
-			},
-		})
-
-table.insert(Weapons, IndexOfWeapon("sniper") + 1,
-		{
-			RequiresSpotterToFire = true,
-			MaxSpotterAssistance = 0,
-			MaxUpAngle = 90,
-			BuildTimeComplete = 2,
-			RequiresLand = true,
-			Icon = "hud-missile-icon",
-			ScrapPeriod = 2,
-			MetalRepairCost = 231.00001525879,
-			Enabled = true,
-			AlignToCursorNormal = false,
-			Detail = "hud-detail-missile",
-			AnimationScript = "weapons/missilelauncher_anim.lua",
-			GroupButton = "hud-group-missile",
-			FileName = path .. "/weapons/gateway.lua",
-			SelectEffect = "ui/hud/weapons/ui_weapons",
-			MetalCost = 700,
-			EnergyCost = 4500,
-			SaveName = "gateway",
-			CompatibleGroupTypes =
 			{
-				[1] = "missile",
-				[2] = "missileinv",
-				[3] = "missile2",
-				[4] = "missile2inv",
-				[5] = "subswarm",
-				[6] = "sublauncher",
 			},
-
-			SpotterFactor = 0,
-			EnergyRepairCost = 1250,
-			InvertedType = "missile2inv",
-			BuildOnGroundOnly = true,
 		})
-
-
-local gatewayportal = FindWeapon("laser")
-if gatewayportal then
-	table.insert(Weapons,
-			InheritType(FindWeapon("laser"),nil,
-					{
-						SaveName = "gatewayportal",
-						FileName = path .. "/weapons/gatewayportal.lua",
-						MetalCost = 0,
-						EnergyCost = 0,
-						BuildTimeComplete = 0.0,
-						Prerequisite = nil,
-						Enabled = false,
-						dlc2_BuildAnywhere = true,
-						RequiresSpotterToFire = false,
-						AnimationScript = nil,
-						BuildOnGroundOnly = true,
-					}
-			)
-	)
-end

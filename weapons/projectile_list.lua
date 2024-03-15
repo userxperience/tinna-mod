@@ -21,7 +21,7 @@ table.insert(Projectiles,
 			ExplodeOnTouch = true,
 			CanBeShotDown = true,
 
-			ProjectileDamage = 200.0,
+			ProjectileDamage = 150.0,
 			ProjectileSplashDamage = 30.0,
 			ProjectileSplashDamageMaxRadius = 200.0,
 			ProjectileSplashMaxForce = 75000,
@@ -96,8 +96,8 @@ local kirovbomb = DeepCopy(FindProjectile("bomb"))
 if kirovbomb then
 	kirovbomb.SaveName = "kirovbomb"
 	kirovbomb.ProjectileDamage = 0
-	kirovbomb.ProjectileSplashDamage = 400.0
-	kirovbomb.ProjectileSplashDamageMaxRadius = 250.0
+	kirovbomb.ProjectileSplashDamage = 250.0
+	kirovbomb.ProjectileSplashDamageMaxRadius = 200.0
 	kirovbomb.ProjectileSplashMaxForce = 75000
 	kirovbomb.IgnitesBackgroundMaterials = false
 	kirovbomb.IgnitesBackgroundMaterialsPassing = false
@@ -120,15 +120,17 @@ if kirovbomb then
 	}
 	table.insert(Projectiles, kirovbomb)
 end
+
 --credit to SamsterBirdies for kirov code
 local kirov = DeepCopy(FindProjectile("nighthawk")) --TODO: display kirov HP somehow
 if kirov then
 	kirov.AlwaysIncendiary = true
 	kirov.SaveName = "kirov"
-	kirov.AntiAirHitpoints = 2500 --cannon does 700 damage plus 40 slash damage
+	kirov.AntiAirHitpoints = 150 --cannon does 700 damage plus 40 slash damage
 	kirov.MaxAge = 50000
 	kirov.dlc2_Bombs = nil
 	kirov.TrailEffect = path .. "/effects/kirovprojectiletrail.lua"
+	kirov.Effects.Impact['firebeam'] = { Effect = nil, Projectile = nil, Terminate = false, Splash = false, KeepHitpointLoss = true}
 	kirov.Projectile =
 	{
 		Root =
@@ -145,24 +147,51 @@ if kirov then
 	local kirovP2 = DeepCopy(kirov)
 	if kirovP2 then
 		kirovP2.SaveName = "kirovP2"
-		kirovP2.Effects.Impact =
-		{
-			['default'] = "mods/dlc2/effects/nighthawk_explode.lua",
-			['antiair'] = "mods/dlc2/effects/nighthawk_explode.lua",
-		}
+		kirovP2.Effects.Impact = nil
 		--age effects
 		kirovP2.Effects.Age = {}
-		local bombCount = 10
-		local bombPeriod = 1000
+		local bombCount = 5
+		local bombPeriod = 2000
 		for i = 0, bombPeriod*bombCount, bombPeriod do
 			kirovP2.Effects.Age['t' .. tostring(i)] = { Effect = "mods/dlc2/effects/bomb_release.lua", Projectile = { Count = 1, Type = "kirovbomb", StdDev = 0, Speed = 1}, Terminate = false, Splash = false,}
 		end
-		kirovP2.Effects.Age['t' .. tostring(1000*(bombCount + 1))] = {Effect = path .. "/effects/kirov_bank.lua", Terminate = true, Splash = false,}
+		kirovP2.Effects.Age['t' .. tostring(bombPeriod*(bombCount + 1))] = {Effect = path .. "/effects/kirov_bank.lua", Terminate = true, Splash = false,}
 	end
+
+	local kirovCrashing = DeepCopy(FindProjectile("bomb"))
+	if kirovCrashing then
+	kirovCrashing.SaveName = "kirovCrashing"
+		kirovCrashing.AlwaysIncendiary = true
+		kirovCrashing.Effects.Age = {}
+		kirovCrashing.ProjectileMass = 1
+		kirovCrashing.Gravity = 100
+		kirovCrashing.AntiAirHitpoints = 250
+		kirovCrashing.ProjectileDrag = 0.2
+		kirovCrashing.ProjectileSplashDamage = 400.0
+		kirovCrashing.ProjectileSplashDamageMaxRadius = 300.0
+		kirovCrashing.Projectile =
+		{
+			Root =
+			{
+				Name = "Root",
+				Angle = -90,
+				Sprite = path .. "/weapons/kirov/base.png",
+				PivotOffset = {0, 0},
+				Scale = 1.1,
+			}
+		}
+		kirovCrashing.TrailEffect = path .. "/effects/kirovcrashingprojectiletrail.lua"
+	end
+
+
+
+	table.insert(Projectiles, kirovCrashing)
 	table.insert(Projectiles, kirovP2)
 	table.insert(Projectiles, kirov)
+
+
+
 end
- --TODO: add kirov crashing
 
 local crambullet = DeepCopy(FindProjectile("machinegun"))
 if crambullet then
@@ -253,10 +282,10 @@ table.insert(Projectiles, lobbershell)
 local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
 if lobberbomblet then
 	lobberbomblet.SaveName = "lobberbomblet"
-	lobberbomblet.ProjectileMass = 500
+	lobberbomblet.ProjectileMass = 300
 	lobberbomblet.ProjectileDrag = 300
-	lobberbomblet.ProjectileDamage = 5
-	lobberbomblet.ProjectileSplashDamage = 10
+	lobberbomblet.ProjectileDamage = 3
+	lobberbomblet.ProjectileSplashDamage = 5
 	lobberbomblet.Impact = 0
 	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
 
@@ -265,93 +294,11 @@ if lobberbomblet then
 			["default"] = "effects/impact_medium.lua",
 		}
 	}
+	crambullet.DamageMultiplier =
+	{	{	Direct = 1,	Fire = 1,	SaveName = "reactor",	Splash = 1,	},
+		 {	SaveName = "armour",	Direct = 0.7,},
+	}
+
+
     end
     table.insert(Projectiles, lobberbomblet)
-
-local gatewaymissile = DeepCopy(FindProjectile("missile2"))
-if gatewaymissile then
-	gatewaymissile.SaveName = "gatewaymissile"
-	Missile =
-	{
-		ThrustAngleExtent = 90,
-		ErraticAngleExtentStdDev = 0.01,
-		ErraticAngleExtentMax = 0.01,
-		MaxSteerPerSecond = 500,
-		MaxSteerPerSecondErratic = 0.001,
-		ErraticAnglePeriodMean = 0,
-		ErraticAnglePeriodStdDev = 0.001,
-		RocketThrust = 10000000,
-		RocketThrustChange = 6000,
-		ErraticThrust = 1.4,
-		CruiseTargetDistance = 300,
-		CruiseTargetDuration = .5,
-		TargetRearOffsetDistance = 100000,
-		MinTargetUpdateDistance = 10,
-}
-	gatewaymissile.Effects =
-	{
-		Age =
-		{
-			['t400'] = { Effect = nil, Projectile = nil, Terminate = true, Splash = false,}
-		}
-	}
-end
-table.insert(Projectiles, gatewaymissile)
-
-
-
-local gatewaylaser = DeepCopy(FindProjectile("laser"))
-if gatewaylaser then
-	gatewaylaser.SaveName = "gatewaylaser"
-	gatewaylaser.ProjectileSprite = path .. "/weapons/media/megabeam"
-	gatewaylaser.ProjectileSpriteMipMap = true
-	gatewaylaser.DrawBlurredProjectile = false
-	gatewaylaser.ProjectileMass = 1.0
-	gatewaylaser.ProjectileDrag = 0.0
-	gatewaylaser.ProjectileIncendiary = true
-	gatewaylaser.IgnitesBackgroundMaterials = true
-	gatewaylaser.IgnitesBackgroundMaterialsPassing = true
-	gatewaylaser.IgnitesBackgroundMaterialsPassingSource = false
-	gatewaylaser.DeflectedByShields = true
-	gatewaylaser.ExplodeOnTouch = false
-	gatewaylaser.Impact = 100000
-	gatewaylaser.BeamScrollRate = -10
-	gatewaylaser.BeamOcclusionDistance = 200
-	gatewaylaser.ProjectileDamage = 10.00
-	gatewaylaser.SpeedIndicatorFactor = 0.05
-	gatewaylaser.ProjectileThickness = 30
-
-end
-table.insert(Projectiles, gatewaylaser)
-
-    --local lobberbomblet = DeepCopy(FindProjectile("mortar2"))
-    --if lobberbomblet then
-    --	lobberbomblet.SaveName = "lobberbomblet"
-    --	lobberbomblet.ProjectileMass = 500
-    --	lobberbomblet.ProjectileDrag = 300
-    --	lobberbomblet.ProjectileDamage = 5
-    --	lobberbomblet.ProjectileSplashDamage = 0
-    --	lobberbomblet.Impact = 0
-    --	lobberbomblet.TrailEffect = path .. "/effects/lobberbomblettrail.lua"
-    --
-    --	lobberbomblet.Effects = {
-    --		Impact = {
-    --			["device"] = lobbershellbaseimpact,
-    --			["antiair"] = lobbershellbaseimpact,
-    --			["foundations"] = lobbershellbaseimpact,
-    --			["rocks01"] = lobbershellbaseimpact,
-    --			["shield"] = lobbershellbaseimpact,
-    --			["default"] = lobbershellbaseimpact,
-    --		}
-    --	}
-    --end
-    --table.insert(Projectiles, lobberbomblet)
-
-
-
-    --local template = DeepCopy(FindProjectile("machinegun"))
-    --if template then
-    --	template.SaveName = "template"
-    --
-    --end
-    --table.insert(Projectiles, template)
